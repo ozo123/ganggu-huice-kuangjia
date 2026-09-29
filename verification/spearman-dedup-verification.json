@@ -1,0 +1,47 @@
+{
+  "passed": true,
+  "created_at_utc": "2026-09-29T12:54:19.605319+00:00",
+  "specification_version": "2026-09-29.spearman-dedup-v10",
+  "method": {
+    "method": "spearman",
+    "rank_method": "average",
+    "sample": "pairwise_finite",
+    "min_stocks": 20,
+    "winsorize": false,
+    "aggregation": "equal_weight_mean_signed"
+  },
+  "regression_tests_passed": 24,
+  "skill_frontmatter_validation_passed": true,
+  "real_sample": {
+    "source": "output\\LLM基本面时点研究-2026-0926-回测结果\\backtest",
+    "mode": "reinvest",
+    "factor_ids": [
+      "fund_cash_margin_seed",
+      "fund_cfoa_cash_conversion_r1",
+      "fund_cfoa_positive_equity_r2",
+      "fund_cfoa_seed",
+      "fund_earnings_change_seed",
+      "fund_earnings_margin_confirm_r1"
+    ],
+    "shape": [
+      6,
+      156,
+      2767
+    ],
+    "sample_start": "2010-01-29",
+    "sample_end": "2022-12-30",
+    "finite_matrix_entries": 36,
+    "max_abs_error_vs_scipy_spearmanr": 2.220446049250313e-16,
+    "valid_month_counts_and_mean_overlap_match": true,
+    "input_sha256": {
+      "runs\\fund_cash_margin_seed\\eb1868dcf08c8ae4b87b26ee\\monthly_reinvest.npy": "fe6363bf3f731b407703fee1f89d2302dff5fde287ed643f0fb8b17fe441583f",
+      "runs\\fund_cfoa_cash_conversion_r1\\14061d52a647f058da43dceb\\monthly_reinvest.npy": "cb7761ccfa8db8e8269ac23f3d4178eadce36be54f9c56d727e609beafe17416",
+      "runs\\fund_cfoa_positive_equity_r2\\3c746574898b065e4179f1ad\\monthly_reinvest.npy": "28ab8243cb67d6bfe11707c33ca15564893dd3994a9af60fddbd8f096ed3f910",
+      "runs\\fund_cfoa_seed\\43f3b46516cc50b554a9d652\\monthly_reinvest.npy": "45988f6a2ad69102e5fdcccfa71e6f980467c6e58853b2cddbac6d9a86f34976",
+      "runs\\fund_earnings_change_seed\\2fa62a537ea02d75d28ba327\\monthly_reinvest.npy": "13acfa652526f58ff9349ac8e7879eebd3c5fa54c9b1e7cca73f67a3304c7ff4",
+      "runs\\fund_earnings_margin_confirm_r1\\3243c66e4d79b7404b54e084\\monthly_reinvest.npy": "a0c8bdebcecb4a96a8a0bf22f443d8e173435aceb3f955ed037110884013a5d8"
+    },
+    "input_hashes_unchanged": true
+  },
+  "scope": "Spearman deduplication, configuration and method propagation only; real saved factor arrays read-only. No new backtest, historical reselection or 20-day ledger certification."
+}

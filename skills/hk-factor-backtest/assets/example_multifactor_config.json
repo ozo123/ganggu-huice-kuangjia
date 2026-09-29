@@ -1,6 +1,6 @@
 {
   "schema_note": "多因子流程配置示例；执行前由本次指定引擎显式适配和检验，不宣称旧内置入口已支持这些字段。",
-  "specification_version": "2026-09-29.train2010-2022-rolling20-talib-v6",
+  "specification_version": "2026-09-29.spearman-dedup-v10",
   "data_root": null,
   "factors": "example_factors.json",
   "output": "./example-output",
@@ -13,6 +13,10 @@
   "holds": [20],
   "modes": ["cash", "reinvest"],
   "groups": 20,
+  "correlation_method": "spearman",
+  "correlation_threshold": 0.8,
+  "min_correlation_months": 1,
+  "min_ic": 0.01,
   "fee_one_way": 0.002,
   "training_sample_rule": "signal, entry and target maturity must all lie in the training interval",
   "purge_unmatured_labels": true,

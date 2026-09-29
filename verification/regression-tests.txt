@@ -1,0 +1,29 @@
+test_average_signed_months_equally_before_absolute_threshold (test_dedup_spearman.SpearmanDedup.test_average_signed_months_equally_before_absolute_threshold) ... ok
+test_configuration_defaults_and_rejects_other_methods (test_dedup_spearman.SpearmanDedup.test_configuration_defaults_and_rejects_other_methods) ... ok
+test_nonlinear_duplicates_are_removed_in_both_directions (test_dedup_spearman.SpearmanDedup.test_nonlinear_duplicates_are_removed_in_both_directions) ... ok
+test_pairwise_ties_missing_and_extreme_values_match_scipy (test_dedup_spearman.SpearmanDedup.test_pairwise_ties_missing_and_extreme_values_match_scipy) ... ok
+test_report_preserves_historical_and_unknown_correlation_methods (test_dedup_spearman.SpearmanDedup.test_report_preserves_historical_and_unknown_correlation_methods) ... ok
+test_twenty_stock_boundary_and_constant_intersection (test_dedup_spearman.SpearmanDedup.test_twenty_stock_boundary_and_constant_intersection) ... ok
+test_actual_fee_cash_identity_and_rolling_holds (test_standalone.Regression.test_actual_fee_cash_identity_and_rolling_holds) ... ok
+test_cash_dividend_and_split_ledger (test_standalone.Regression.test_cash_dividend_and_split_ledger) ... ok
+test_fields_and_future_dependence (test_standalone.Regression.test_fields_and_future_dependence) ... ok
+test_greedy_prefers_more_factors_than_a_hub (test_standalone.Regression.test_greedy_prefers_more_factors_than_a_hub) ... ok
+test_ic_flip_recomputes_the_portfolio (test_standalone.Regression.test_ic_flip_recomputes_the_portfolio) ... ok
+test_negative_and_missing_correlations (test_standalone.Regression.test_negative_and_missing_correlations) ... ok
+test_pool_boundary_and_calendar_months (test_standalone.Regression.test_pool_boundary_and_calendar_months) ... ok
+test_standalone_cli_partial_mode_and_resume (test_standalone.Regression.test_standalone_cli_partial_mode_and_resume) ... ok
+test_threshold_order_and_no_backfill (test_standalone.Regression.test_threshold_order_and_no_backfill) ... ok
+test_ties_not_arbitrarily_split (test_standalone.Regression.test_ties_not_arbitrarily_split) ... ok
+test_winsorized_ic_against_scipy_and_pairwise_sample (test_standalone.Regression.test_winsorized_ic_against_scipy_and_pairwise_sample) ... ok
+test_distinct_parameter_versions_are_not_collapsed (test_single_factor_template.SingleFactorTemplate.test_distinct_parameter_versions_are_not_collapsed) ... ok
+test_independent_input_and_portable_series (test_single_factor_template.SingleFactorTemplate.test_independent_input_and_portable_series) ... ok
+test_invalid_input_does_not_replace_report (test_single_factor_template.SingleFactorTemplate.test_invalid_input_does_not_replace_report) ... ok
+test_state_adapter_preserves_metrics_without_series (test_single_factor_template.SingleFactorTemplate.test_state_adapter_preserves_metrics_without_series) ... ok
+test_year_boundary_includes_first_session (test_single_factor_template.SingleFactorTemplate.test_year_boundary_includes_first_session) ... ok
+test_display_override_does_not_change_frozen_spec (test_formula_display.FormulaDisplay.test_display_override_does_not_change_frozen_spec) ... ok
+test_expression_and_python_fallbacks_and_safe_script (test_formula_display.FormulaDisplay.test_expression_and_python_fallbacks_and_safe_script) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 4.749s
+
+OK

@@ -1,7 +1,7 @@
 {
   "skill": "hk-factor-backtest",
-  "specification_version": "2026-09-29.llm-reference-single-v9",
-  "created_at_utc": "2026-09-29T11:40:07.269798+00:00",
+  "specification_version": "2026-09-29.spearman-dedup-v10",
+  "created_at_utc": "2026-09-29T12:56:03.291954+00:00",
   "package_kind": "workflow, report template, configuration examples and legacy reference source",
   "default_hold_days": 20,
   "rolling": "daily; settled cash shared; overdue positions separate",
@@ -34,8 +34,10 @@
     "historical_results_recomputed_or_relabelled": false,
     "new_20_day_backtest_executed": false,
     "legacy_engine_certified_for_v6": false,
-    "note": "内置报告入口已接通共享单因子模板并通过保存结果映射检验。交易计算仍为继承实现，未因模板升级而认证20日、开盘入场、共享现金等新账本口径。",
-    "single_factor_report_entry_wired": true
+    "note": "Spearman去重与方法记录通过24项回归及真实保存截面核对；共享单因子模板保持v9。交易计算仍为继承实现，未因此认证20日、开盘入场或共享现金等新账本口径。",
+    "single_factor_report_entry_wired": true,
+    "spearman_dedup_regression_passed": true,
+    "spearman_real_sample_vs_scipy_passed": true
   },
   "excluded": [
     "assets/local_config.json",
@@ -47,15 +49,15 @@
     "assets/dashboard.js",
     "assets/chart-area.html",
     "assets/registry.js",
-    "old implementation test files",
+    "legacy mining/pipeline implementation tests",
     "__pycache__ and compiled caches",
     "raw market data, fitted models and historical backtest datasets"
   ],
   "files": [
     {
       "path": "agents/openai.yaml",
-      "bytes": 632,
-      "sha256": "52e70afd79716f40a753398fbb1bb1f63c7c51ae7f92e4b98f857df2d3c9fd3c"
+      "bytes": 799,
+      "sha256": "a604a7c69a688bedc7163c18764fcf7ad5bda7319d625e8e1cfd64057d2b1383"
     },
     {
       "path": "assets/dashboard.css",
@@ -64,8 +66,8 @@
     },
     {
       "path": "assets/example_config.json",
-      "bytes": 563,
-      "sha256": "d0d42b0a71e7a1c090def0860d33fb7463087e3cc350ee72c481ea589c55dff5"
+      "bytes": 599,
+      "sha256": "f182cb2267e67dbb2659a59684de4593b20e2539ce9349de265be6c8116d7060"
     },
     {
       "path": "assets/example_factors.json",
@@ -74,8 +76,8 @@
     },
     {
       "path": "assets/example_multifactor_config.json",
-      "bytes": 1064,
-      "sha256": "9938e848ba29fbb03275eb65ce96e2a7841bf4e4ec43849469faa65266ae6564"
+      "bytes": 1166,
+      "sha256": "7bd6283ced3ebc21224fab8ff317e298075af068f39504d94bd7a87089924007"
     },
     {
       "path": "assets/single-factor-generic/assets/dashboard.css",
@@ -169,8 +171,8 @@
     },
     {
       "path": "references/multifactor-workflow.md",
-      "bytes": 10383,
-      "sha256": "86a2b07e2a4eaebc3bb69444918daa1b76766848545633edc23ed20c87423d4d"
+      "bytes": 10903,
+      "sha256": "1e088b0ca752236be390e2b301ba0e1815a809ec59da76f8328a827de2ad2b0c"
     },
     {
       "path": "references/rolling-execution.md",
@@ -179,13 +181,13 @@
     },
     {
       "path": "references/single-factor-data.md",
-      "bytes": 3895,
-      "sha256": "3ae27ba2326214184e974eacce93dbc966f161f1aa5a301830433c9c487a407e"
+      "bytes": 4249,
+      "sha256": "096b51ecd19a0bb6c5c31c221ae7eb699f367808465cbc65b1b7a344051abccf"
     },
     {
       "path": "references/single-factor-report.md",
-      "bytes": 4218,
-      "sha256": "3d1907bb646c71b8887fb435b9df734d76471a2e0cbfd355446605d913ece160"
+      "bytes": 4366,
+      "sha256": "85cc58e554c4ed6a07b45f0455d13039fe8d8521c1d897ebdeb5722eeac88db4"
     },
     {
       "path": "references/standalone-inputs.md",
@@ -194,13 +196,13 @@
     },
     {
       "path": "references/standalone-methodology.md",
-      "bytes": 9235,
-      "sha256": "114b7a11d6f32c59529c0a3003f5cad4baa3a69f498beac9030bb1201724ae4d"
+      "bytes": 9935,
+      "sha256": "5be252e594ff34400a3c3cb0f7e12ea979d3861d1620340bf36db08d99a44074"
     },
     {
       "path": "references/standalone-report.md",
-      "bytes": 11614,
-      "sha256": "02bf7ede7a83407e8068a113a9a915010032d2c580547315f57acd863da67db5"
+      "bytes": 11682,
+      "sha256": "f1daf2deff93702ce2c9f0cb2c01ecd430dbb2d8b41a8303f44402608874fc94"
     },
     {
       "path": "scripts/adapters.py",
@@ -239,8 +241,8 @@
     },
     {
       "path": "scripts/engine/ic.py",
-      "bytes": 8103,
-      "sha256": "20c8131e83e4dc1e6866001e49312e7061092e57c9ad7416ea748ee160d6d4b5"
+      "bytes": 8912,
+      "sha256": "2533ddfe380e4b3c08de3604995fa4207d334d91e2738eddff6d6dd618357b77"
     },
     {
       "path": "scripts/engine/rolling.py",
@@ -264,8 +266,8 @@
     },
     {
       "path": "scripts/run.py",
-      "bytes": 16218,
-      "sha256": "9af160a67451d4ac499b5b4f7ccf98d9a2aa83f852f0db6180a75fa3e7e95711"
+      "bytes": 17186,
+      "sha256": "0a8dd2649d78a346c582e3db8c7e3ad82b5d06ae5de65b63af33c0e5e31bc7b6"
     },
     {
       "path": "scripts/select_factors.py",
@@ -288,6 +290,11 @@
       "sha256": "0a7f4a253b4fa5baf3aeca2b3e6b8dccfb81cb19b92770f4cc7c74c16d222d5f"
     },
     {
+      "path": "scripts/test_dedup_spearman.py",
+      "bytes": 6632,
+      "sha256": "5c9c70b7f6c77d46cead97e681265891b67de25885892bcf72e8a97409423226"
+    },
+    {
       "path": "scripts/test_formula_display.py",
       "bytes": 1167,
       "sha256": "667736ab7c822460aeff611b9015a52ae7d595d9fc245bd644141c49b268886a"
@@ -298,14 +305,27 @@
       "sha256": "ab4ebbcf23c3e772fe1e14d3f5aacab4bbeb9cbfaac27b8f974995b3bcee5e4a"
     },
     {
+      "path": "scripts/test_standalone.py",
+      "bytes": 12039,
+      "sha256": "7098199d55b13d84e24fc668c2f307021d708b7ea14874ca813582eaf8bb7928"
+    },
+    {
       "path": "SKILL.md",
-      "bytes": 12119,
-      "sha256": "6c5f1c3e7d114ba34c73468c3350abd894e6ba709c6bf677eae816ace68be367"
+      "bytes": 12292,
+      "sha256": "72e2b7d8fa386606e83866cb56f51e4ccf3e486c35053480784480896d55f3bd"
     },
     {
       "path": "verification/existing-result-date-audit.json",
       "bytes": 38941,
       "sha256": "0669216ea08a3df15c2c18e3773f464d63d4d9ae72d13fdbf6aa209cc7f92da2"
     }
-  ]
+  ],
+  "factor_correlation": {
+    "method": "spearman",
+    "rank_method": "average",
+    "sample": "pairwise_finite",
+    "min_stocks": 20,
+    "winsorize": false,
+    "aggregation": "equal_weight_mean_signed"
+  }
 }

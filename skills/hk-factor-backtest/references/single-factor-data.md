@@ -21,6 +21,8 @@ nav、ic_series及可选pearson_ic/cumulative_ic/drawdown与同条dates等长。
 
 因子status仅表达计算可用性（completed、blocked、no_entries、failed等），不能用作好坏分类。原result.status/selected等筛选字段可以随证据存档，但页面不据此筛除或分组。总览和分组收益图使用annualized_return，缺失时不以cagr补齐；完整指标表同时列出两种年化。默认视图为总览／单因子／全部因子。
 
+新结果的 `correlations.method` 明确记录月末共同有限截面Spearman、并列平均秩、不缩尾及有符号ρ等权平均。内置入口将机器可读规则写入配置的 `factor_correlation` 和 `correlation.json` 的 `method_spec`，供缓存、筛选与报告追溯；历史数据缺方法时保留未知，不自动补成Spearman。
+
 ## 大型报告与离线分片
 
 将指标留在results，逐日序列另存分片。使用渲染器的 `write_payload(path, key, payload)` 写入本地JS，设置result.payload为相对文件名、payload_key为key。payload包含dates、ic_series、pearson_ic、cumulative_ic、drawdown，及portfolios/groups的id/nav。分片不改变结果ID、评估设置或已保存指标。渲染器校验分片内容和引用，页面内置加载逻辑，无须修改生成后的JS。分片与数据文件必须随dashboard一并保留。

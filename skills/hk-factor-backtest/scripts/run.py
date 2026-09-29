@@ -18,7 +18,7 @@ from standalone_utils import ROOT, MODES, HOLDS, read, write, clean, digest, fil
 from factor_contract import load_specs, admit, compute, causality_check
 from daily_data import discover, columns, prepare, factor_fields
 from backtest_core import compute_ic, oriented_ic, grouping, cohort_paths, setting
-from engine.ic import exact_correlations, target_context, IC_WINSORIZE
+from engine.ic import exact_correlations, target_context, IC_WINSORIZE, FACTOR_CORRELATION, FACTOR_CORRELATION_LABEL
 from select_factors import select_slice
 
 
@@ -33,13 +33,16 @@ def configuration(args):
         if cfg.get(k): cfg[k] = str((base / cfg[k]).resolve())
     fixed = dict(holds=list(HOLDS), modes=list(MODES), groups=20, fee_one_way=.002, listing_age_months=6,
                  adv_days=5, min_adv_hkd=3000000, amount_comparison='>', ic_orientation='full_sample_per_setting',
-                 correlation_threshold=.8, min_ic=.01, capital_model='gross_cap_1x_postclose_v4')
+                 correlation_method=FACTOR_CORRELATION['method'], correlation_threshold=.8, min_ic=.01, capital_model='gross_cap_1x_postclose_v4')
     for key, value in fixed.items():
         if key in cfg and cfg[key] != value: raise ValueError(f'This skill requires {key}={value!r}')
         cfg[key] = value
     if cfg.get('ic_winsorize', IC_WINSORIZE) != IC_WINSORIZE:
         raise ValueError('This skill requires daily paired IC winsorization at 1%/99%')
     cfg['ic_winsorize'] = dict(IC_WINSORIZE)
+    if cfg.get('factor_correlation', FACTOR_CORRELATION) != FACTOR_CORRELATION:
+        raise ValueError('This skill requires pairwise Spearman factor correlation with average ranks and no winsorization')
+    cfg['factor_correlation'] = dict(FACTOR_CORRELATION)
     cfg.setdefault('min_correlation_months', 1)
     cfg.setdefault('allow_observed_age_proxy', True)
     if cfg.get('start') and cfg.get('end') and cfg['start'] > cfg['end']: raise ValueError('start is after end')
@@ -109,7 +112,8 @@ def execute(cfg, specs, output, retry=False):
                 if target is None: target = target_context(marks)
                 ic_summary_raw, raw_ic = compute_ic(signal, marks, target)
                 raw_ic.to_parquet(directory / f'raw_ic_{mode}.parquet', index=False)
-                payload = {'factor_id': fid, 'function': fid, 'output_name': 'IC 定向值', 'group': '给定因子', 'modes': {mode: {}}, 'audit_path': '.'}
+                payload = {'factor_id': fid, 'function': fid, 'output_name': 'IC 定向值', 'group': '给定因子', 'modes': {mode: {}}, 'audit_path': '.',
+                           'factor_correlation': dict(FACTOR_CORRELATION)}
                 summary_rows = []; paths_by_sign = {}; groups_by_sign = {}
                 for h in HOLDS:
                     try:
@@ -134,7 +138,8 @@ def execute(cfg, specs, output, retry=False):
                 for h in HOLDS: rec['settings'][f'{mode}__{h}'] = {'status': 'failed', 'reason': f'{type(exc).__name__}: {exc}'}
             write(directory / 'record.json', rec)
         del fields, marks, target
-    corr = {'ids': [r['id'] for r in records], 'sample_dates': [dates[i] for i in midx], 'modes': {}, 'slices': {}}
+    corr = {'ids': [r['id'] for r in records], 'sample_dates': [dates[i] for i in midx], 'modes': {}, 'slices': {},
+            'method': FACTOR_CORRELATION_LABEL, 'method_spec': dict(FACTOR_CORRELATION)}
     for mode in MODES:
         values = []
         for rec in records:
@@ -148,7 +153,8 @@ def execute(cfg, specs, output, retry=False):
             corr['slices'][f'{mode}__{h}'] = clean({'matrix': oriented, 'days': months, 'overlap': overlap})
             pd.DataFrame(oriented, index=corr['ids'], columns=corr['ids']).to_csv(output / f'correlation_{mode}_{h}.csv', encoding='utf-8-sig')
     selection = {'slices': {f'{m}__{h}': select_slice(records, m, h, corr, min_months=cfg['min_correlation_months']) for m in MODES for h in HOLDS},
-                 'orientation': 'full-sample mean Rank IC; negative => -factor, then recompute portfolios', 'in_sample': True}
+                 'orientation': 'full-sample mean Rank IC; negative => -factor, then recompute portfolios', 'in_sample': True,
+                 'correlation_method': cfg['correlation_method'], 'factor_correlation': dict(FACTOR_CORRELATION)}
     rows = []
     for rec in records:
         directory = run_index[rec['id']]
@@ -170,6 +176,9 @@ def verify(state, output):
     checks = []; expected = set(f'{m}__{h}' for m in MODES for h in HOLDS)
     def check(name, ok):
         checks.append({'check': name, 'passed': bool(ok)})
+    if 'factor_correlation' in state['config']:
+        check('factor correlation method recorded', state['correlation'].get('method_spec') == state['config']['factor_correlation'])
+        check('selection correlation method recorded', state['selection'].get('factor_correlation') == state['config']['factor_correlation'])
     for rec in state['records']:
         check(rec['id'] + ' six settings accounted', set(rec['settings']) == expected)
         for key, result in rec['settings'].items():

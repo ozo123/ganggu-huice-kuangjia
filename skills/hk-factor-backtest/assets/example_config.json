@@ -17,6 +17,7 @@
   "min_adv_hkd": 3000000,
   "amount_comparison": ">",
   "ic_orientation": "full_sample_per_setting",
+  "correlation_method": "spearman",
   "correlation_threshold": 0.8,
   "min_ic": 0.01,
   "min_correlation_months": 1

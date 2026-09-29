@@ -137,7 +137,24 @@ def compute_ic(signal,v,context=None):
     return summary,pd.concat(frames,ignore_index=True)
 
 
+FACTOR_CORRELATION = {
+    'method': 'spearman', 'rank_method': 'average',
+    'sample': 'pairwise_finite', 'min_stocks': 20, 'winsorize': False,
+    'aggregation': 'equal_weight_mean_signed',
+}
+FACTOR_CORRELATION_LABEL = (
+    '月末共同有限股票截面 Spearman 秩相关（至少20只，并列平均秩，不作IC缩尾）；'
+    '有效月份有符号ρ等权平均，去重使用 |平均ρ|。'
+)
+
+
 def exact_correlations(values):
+    """Pairwise-complete Spearman per date, then the equal-weight signed mean.
+
+    Rank each factor again on the pair's common finite stocks, with average
+    ties. Inputs are formula outputs, without IC winsorization; this is not a
+    correlation of IC time series. Shape: factors x sampled dates x stocks.
+    """
     F,D,N=values.shape; sums=np.zeros((F,F)); counts=np.zeros((F,F),dtype=int); overlaps=np.zeros((F,F))
     for d in range(D):
         x=np.asarray(values[:,d,:],float); finite=np.isfinite(x)
@@ -147,8 +164,8 @@ def exact_correlations(values):
         for a,ia in enumerate(buckets):
             for ib in buckets[a:]:
                 common=finite[ia[0]]&finite[ib[0]]; n=int(common.sum())
-                if n<20: continue
-                xa=rankdata(x[np.ix_(ia,common)],axis=1); xb=rankdata(x[np.ix_(ib,common)],axis=1)
+                if n<FACTOR_CORRELATION['min_stocks']: continue
+                xa=rankdata(x[np.ix_(ia,common)],method='average',axis=1); xb=rankdata(x[np.ix_(ib,common)],method='average',axis=1)
                 xa-=xa.mean(1,keepdims=True); xb-=xb.mean(1,keepdims=True)
                 sa=np.sqrt((xa*xa).sum(1)); sb=np.sqrt((xb*xb).sum(1)); denom=sa[:,None]*sb[None,:]
                 corr=np.divide(xa@xb.T,denom,out=np.full(denom.shape,np.nan),where=denom>0)
