@@ -1,7 +1,7 @@
 {
   "skill": "hk-factor-backtest",
   "specification_version": "2026-09-29.single-chart-colors-v12",
-  "created_at_utc": "2026-09-29T13:25:49.418182+00:00",
+  "created_at_utc": "2026-09-29T13:57:43.662339+00:00",
   "package_kind": "workflow, report template, configuration examples and legacy reference source",
   "default_hold_days": 20,
   "rolling": "daily; settled cash shared; overdue positions separate",
@@ -96,8 +96,8 @@
     },
     {
       "path": "assets/single-factor-generic/assets/report.js",
-      "bytes": 30624,
-      "sha256": "63a4bfc9326e6c8114944b3a6133d1d4a5897ae50bdc0d52e064c0481f7a9481"
+      "bytes": 30623,
+      "sha256": "d7616dfb8e810d5b33b910ed29d4bfec37724c461c068c74c2dd41ef043d85fc"
     },
     {
       "path": "assets/single-factor-generic/assets/standalone.css",
@@ -116,8 +116,8 @@
     },
     {
       "path": "assets/single-factor-generic/template.json",
-      "bytes": 1951,
-      "sha256": "bccc1a35793abd623e92b2f8014e1385de3e1ff6070dc7126762da4030c24d2b"
+      "bytes": 1950,
+      "sha256": "8fac8c50727dc8cfde530df5e1ea27f65aaab57d1c398f7d3ee732b35791dcf0"
     },
     {
       "path": "assets/standalone-charts.html",

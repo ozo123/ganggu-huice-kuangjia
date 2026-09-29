@@ -151,7 +151,7 @@
     const contexts=C.filter(c=>compatible(c,contextMap.get(contextId)));
     const aggregates=contexts.map(c=>{const rr=R.filter(r=>r.context_id===c.id&&($('variants').value==='all'||r.preferred!==false));const pp=metrics(rr,'LS').filter(p=>p.active!==false);return {c,label:dimensions.length?[c.dimensions.mode,c.dimensions.hold].filter(Boolean).join(' / '):c.label,ret:median(pp.map(p=>p.annualized_return)),ic:median(rr.map(r=>r.ic_mean)),n:pp.filter(p=>finite(p.annualized_return)).length};});
     const valid=aggregates.filter(x=>finite(x.ret));
-    plot('overview-median',valid.length?[{x:valid.map(x=>x.label),y:valid.map(x=>x.ret),type:'bar',customdata:valid.map(x=>x.n),marker:{color:valid.map(x=>x.ret<0?'#a8452f':'#1f6b62')},hovertemplate:'%{x}<br>中位年化收益 %{y:.2%}<br>%{customdata} 个有效设置<extra></extra>'}]:[],'',{hovermode:'closest',yaxis:{tickformat:'.0%'},xaxis:{tickangle:-25}});
+    plot('overview-median',valid.length?[{x:valid.map(x=>x.label),y:valid.map(x=>x.ret),type:'bar',customdata:valid.map(x=>x.n),marker:{color:valid.map(x=>x.ret<0?'#a8452f':'#1f6b62')},hovertemplate:'%{x}<br>中位年化收益 %{y:.2%}<br>%{customdata} 个有效设置<extra></extra>'}]:[],'',{hovermode:'closest',yaxis:{tickformat:'.2%'},xaxis:{tickangle:-25}});
     $('median-note').textContent=aggregates.length+' 个实际评估设置；分组内取已保存数值的中位数，不跨实验或阶段汇总。';
     const ic=aggregates.filter(x=>finite(x.ic));
     plot('overview-decay',ic.length?[{x:ic.map(x=>x.label),y:ic.map(x=>x.ic),type:'scatter',mode:'lines+markers',line:{color:'#28766e'}}]:[],'',{xaxis:{tickangle:-25},yaxis:{title:'Median Rank IC'}});
