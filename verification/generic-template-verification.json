@@ -1,11 +1,63 @@
 {
   "passed": true,
-  "empty_template_has_no_experiment_data": true,
-  "independent_synthetic_input_rendered": true,
-  "invalid_sequence_length_rejected": true,
-  "browser_formula_and_search_checked": true,
-  "mobile_viewport_width": 375,
-  "mobile_document_width": 375,
-  "console_errors": 0,
-  "real_backtest_rerun": false
+  "version": "2026-09-29.llm-reference-single-v9",
+  "checked_at_utc": "2026-09-29T11:37:31.289188+00:00",
+  "visual_reference": "LLM基本面时点研究-2026-0926-回测结果/backtest/dashboard.html",
+  "views": [
+    "overview",
+    "factor",
+    "all"
+  ],
+  "factor_quality_classification": false,
+  "base_reference_css_byte_identical": true,
+  "contract_and_formula_tests_passed": 7,
+  "historical_report": {
+    "factors": 80,
+    "settings": 852,
+    "contexts": 42,
+    "series_files": 360,
+    "correlation_matrices": 30,
+    "raw_input_hashes_unchanged": true,
+    "arithmetic_annual_returns_and_cagr_verified_separately": true
+  },
+  "saved_engine_state": {
+    "settings": 6,
+    "metrics_and_source_hashes_verified": true,
+    "shared_template_report_entry_verified": true
+  },
+  "browser": {
+    "three_tabs_checked": true,
+    "all_factors_visible": 80,
+    "search_example_results": 2,
+    "missing_data_filter_results": 19,
+    "default_scatter_points": 15,
+    "all_parameter_settings": 18,
+    "all_parameter_scatter_points": 16,
+    "formula_mathml_rendered": true,
+    "factor_setting_options": 42,
+    "detail_groups": 20,
+    "detail_group_and_ls_legend_entries": 21,
+    "detail_context_and_header_synchronized": true,
+    "frozen_setting_missing_series_stays_missing": true,
+    "experiment_switch_checked": true,
+    "numeric_sort_checked": true,
+    "signed_correlation_heatmap_rendered": true,
+    "desktop": {
+      "viewport": 1440,
+      "document_width": 1425,
+      "plot_width_matches_host": true
+    },
+    "mobile": {
+      "viewport": 390,
+      "document_width": 375,
+      "plot_width_matches_host": true
+    },
+    "empty_state_checked": true,
+    "independent_synthetic_factor_checked": true,
+    "synthetic_final_nav": "1.020",
+    "application_console_errors": 0,
+    "file_url_runtime_check": "Unavailable: in-app browser permits only HTTP(S). Local assets and portable payloads verified; browser QA uses loopback HTTP."
+  },
+  "backtest_rerun": false,
+  "scope": "Template rendering, source mapping, browser interactions and packaging; does not certify new backtest execution rules."
 }

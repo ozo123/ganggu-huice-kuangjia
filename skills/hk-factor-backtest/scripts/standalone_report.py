@@ -48,6 +48,12 @@ def js_assignment(key, value):
 
 
 def publish(state, output):
+    """The engine's default publication path uses the shared single-factor template."""
+    from single_factor_from_state import publish as publish_single_factor
+    return publish_single_factor(state, output)
+
+
+def publish_legacy(state, output):
     assets = output / 'assets'; data = output / 'data'; assets.mkdir(exist_ok=True); data.mkdir(exist_ok=True)
     catalog = []
     descriptions_path = output / 'factor_descriptions.json'

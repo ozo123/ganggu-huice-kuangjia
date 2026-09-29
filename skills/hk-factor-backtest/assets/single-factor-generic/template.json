@@ -1,33 +1,56 @@
 {
-  "version": "2026-09-29.generic-single-visual-v8",
-  "scope": "generic single-factor visual design only",
-  "visual_reference": "User-approved dashboard.html; historical experiment data excluded",
-  "data_interface": "../../references/single-factor-data.md",
-  "renderer": "../../scripts/render_single_factor.py",
-  "files": [
+  "version": "2026-09-29.llm-reference-single-v9",
+  "scope": "Reusable display template; no historical data or factor-quality classification",
+  "visual_reference": "output/LLM基本面时点研究-2026-0926-回测结果/backtest/dashboard.html",
+  "reference_html_sha256": "8b4bca9c92346104e0d8a0da704fed8a8521065ba4d921ab3f48b4df103c437f",
+  "base_css": [
     {
-      "path": "dashboard.html",
-      "sha256": "eb356c149acc9f8bfe4b3a3e4f144285eeaad3a5eae1583b847e20450734820b"
+      "path": "assets/dashboard.css",
+      "sha256": "4e56b0455589f30f000775e3454164f90f73d6734fc2fae4dc3ddb410364279b",
+      "copied_without_changes": true
     },
     {
-      "path": "report-data.js",
-      "sha256": "f850540852383d0716d11374c70c529d9e79f4c80b51a3bfa8eaee7edd55c255"
+      "path": "assets/standalone.css",
+      "sha256": "dfa1715bd9db81a93727945b17ca4d2bfcb37422e40c0217f6c1290613de9aa9",
+      "copied_without_changes": true
+    }
+  ],
+  "views": [
+    "overview",
+    "factor",
+    "all"
+  ],
+  "renderer": "../../scripts/render_single_factor.py",
+  "engine_adapter": "../../scripts/single_factor_from_state.py",
+  "data_interface": "../../references/single-factor-data.md",
+  "files": [
+    {
+      "path": "assets/dashboard.css",
+      "sha256": "4e56b0455589f30f000775e3454164f90f73d6734fc2fae4dc3ddb410364279b"
     },
     {
       "path": "assets/plotly.min.js",
       "sha256": "6d21266ce1bd7d9e5ab4e115989c70c20de0382fd973a8f26ab58619eba4d603"
     },
     {
-      "path": "assets/report.css",
-      "sha256": "e4a049da5d90c7c27cef7c706dc9df0eccfa9c7f0ac7add31e610ef26e2456e3"
+      "path": "assets/report-layout.css",
+      "sha256": "762bd3f025e74e472592520912c53501ebf54aeb5d122ff35a8fe67311070b87"
     },
     {
       "path": "assets/report.js",
-      "sha256": "907b132913f03c86cb36184c787c1f8a3c7ce4ecfae700dad91c1cbb4968d80e"
+      "sha256": "44bdbb25bef4eaef64aebdeb18e43ec6851cc6cc94042d61bcc6f5f456912390"
     },
     {
-      "path": "assets/style.css",
-      "sha256": "e51b2290a633865cd184105dc43d6c30e716091fda69b5a7efccbbf2c6a223dd"
+      "path": "assets/standalone.css",
+      "sha256": "dfa1715bd9db81a93727945b17ca4d2bfcb37422e40c0217f6c1290613de9aa9"
+    },
+    {
+      "path": "dashboard.html",
+      "sha256": "b69e644cf048bb1fee64cd9643862317ad20073c6fbb686679dabe872b4a4d9d"
+    },
+    {
+      "path": "report-data.js",
+      "sha256": "f850540852383d0716d11374c70c529d9e79f4c80b51a3bfa8eaee7edd55c255"
     }
   ]
 }
