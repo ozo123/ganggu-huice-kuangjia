@@ -1,6 +1,6 @@
 {
   "skill": "hk-factor-backtest",
-  "specification_version": "2026-09-29.train2010-2022-rolling20-single-template-v7",
+  "specification_version": "2026-09-29.generic-single-visual-v8",
   "created_at_utc": "2026-09-29T10:51:46.690054+00:00",
   "package_kind": "workflow, report template, configuration examples and legacy reference source",
   "default_hold_days": 20,
@@ -19,11 +19,11 @@
   ],
   "training_labels": "signal, entry and maturity within training window; purge late labels",
   "report_template": {
-    "single_factor": "视频三组合并-2026-0929-回测结果/dashboard.html",
-    "multifactor": "TA-Lib双因子库2010-2022-2026-0928-回测结果"
+    "single_factor": "generic-single-factor-visual",
+    "multifactor": "TA-Lib双因子库"
   },
   "template_assets": {
-    "single_factor": "assets/single-factor-20260929/template.json",
+    "single_factor": "assets/single-factor-generic/template.json",
     "multifactor": "assets/talib-20260928/template.json"
   },
   "existing_result_date_audit": "verification/existing-result-date-audit.json",
@@ -53,8 +53,8 @@
   "files": [
     {
       "path": "agents/openai.yaml",
-      "bytes": 549,
-      "sha256": "21ca63462141afb39bf167c4a8eaa8d5f8aa4d8cff9e4c9e2e660acb5fde6014"
+      "bytes": 573,
+      "sha256": "d1c1c90bb30131029e96771d213e39d9d80a80d408adc6622bd6d89832a70c5d"
     },
     {
       "path": "assets/dashboard.css",
@@ -77,54 +77,39 @@
       "sha256": "9938e848ba29fbb03275eb65ce96e2a7841bf4e4ec43849469faa65266ae6564"
     },
     {
-      "path": "assets/single-factor-20260929/assets/detail.js",
-      "bytes": 4253,
-      "sha256": "bc7fa522269da6d8a84fbe0975e22ba18986db95175be8c67fb0a1ffb1fb512c"
-    },
-    {
-      "path": "assets/single-factor-20260929/assets/merge.css",
-      "bytes": 1079,
-      "sha256": "72b06f637a58f104d7b480b7bb36b9195ba1a86e93a6238fe10aaa2307f90aa6"
-    },
-    {
-      "path": "assets/single-factor-20260929/assets/merge.js",
-      "bytes": 4516,
-      "sha256": "81bfa5337c51f9eb223e91b4585ce31c55572bbb3cb8c73c3c7afcf30a0133fd"
-    },
-    {
-      "path": "assets/single-factor-20260929/assets/plotly.min.js",
+      "path": "assets/single-factor-generic/assets/plotly.min.js",
       "bytes": 4558696,
       "sha256": "6d21266ce1bd7d9e5ab4e115989c70c20de0382fd973a8f26ab58619eba4d603"
     },
     {
-      "path": "assets/single-factor-20260929/assets/style.css",
+      "path": "assets/single-factor-generic/assets/report.css",
+      "bytes": 1204,
+      "sha256": "e4a049da5d90c7c27cef7c706dc9df0eccfa9c7f0ac7add31e610ef26e2456e3"
+    },
+    {
+      "path": "assets/single-factor-generic/assets/report.js",
+      "bytes": 8549,
+      "sha256": "907b132913f03c86cb36184c787c1f8a3c7ce4ecfae700dad91c1cbb4968d80e"
+    },
+    {
+      "path": "assets/single-factor-generic/assets/style.css",
       "bytes": 3891,
       "sha256": "e51b2290a633865cd184105dc43d6c30e716091fda69b5a7efccbbf2c6a223dd"
     },
     {
-      "path": "assets/single-factor-20260929/assets/talib-compare.js",
-      "bytes": 8544,
-      "sha256": "1fe8d851dcf7f482acda11355889c311db23b17d660cee69ad81e2567a1c1143"
+      "path": "assets/single-factor-generic/dashboard.html",
+      "bytes": 3343,
+      "sha256": "eb356c149acc9f8bfe4b3a3e4f144285eeaad3a5eae1583b847e20450734820b"
     },
     {
-      "path": "assets/single-factor-20260929/assets/template-detail.js",
-      "bytes": 2521,
-      "sha256": "371d0fba8e1459d1dc9a3e59bcfb64f38cd62d5aa469c32d722fb649b1793322"
+      "path": "assets/single-factor-generic/report-data.js",
+      "bytes": 333,
+      "sha256": "f850540852383d0716d11374c70c529d9e79f4c80b51a3bfa8eaee7edd55c255"
     },
     {
-      "path": "assets/single-factor-20260929/dashboard.reference.html",
-      "bytes": 10692,
-      "sha256": "f0970d410d1a0379ffeb099d45fbb6383caab9b26641482a3205ee08aad5a92c"
-    },
-    {
-      "path": "assets/single-factor-20260929/factors/factor.reference.html",
-      "bytes": 72258,
-      "sha256": "b53434d322bb78c847cdaee5f9d379920690133558559bbe3a039f5b88c230f6"
-    },
-    {
-      "path": "assets/single-factor-20260929/template.json",
-      "bytes": 2135,
-      "sha256": "455797a8727bfe99a165148f317c3af9377df9f9b75e00aeff50a3a1edb7267a"
+      "path": "assets/single-factor-generic/template.json",
+      "bytes": 1147,
+      "sha256": "240c66539e72f08a238435e58b8a04308c80b0df61601ff0823f791ea2a737d0"
     },
     {
       "path": "assets/standalone-charts.html",
@@ -187,9 +172,14 @@
       "sha256": "daac5d061c942626295963ad15d31487616af62e6146861e753fafbecde1bb12"
     },
     {
+      "path": "references/single-factor-data.md",
+      "bytes": 1753,
+      "sha256": "03bd0b1a086563ee1c4e95ab73bc0bf6f39dcf5f27ab7a724ddb4d9f76e83af6"
+    },
+    {
       "path": "references/single-factor-report.md",
-      "bytes": 3123,
-      "sha256": "22e7f6ad1db1d9708080af1a1898576c240b17b1ef3c6dec367ce97f17117761"
+      "bytes": 1775,
+      "sha256": "6eac223cb310cbd1402c618feb27aed4d59385dcd7d74a1539f8f8d0f479cbb7"
     },
     {
       "path": "references/standalone-inputs.md",
@@ -203,8 +193,8 @@
     },
     {
       "path": "references/standalone-report.md",
-      "bytes": 11670,
-      "sha256": "bd2a60321d035d41be9485c5c00a196fac5245b1a1d763aad2ed1506654b1c6f"
+      "bytes": 11614,
+      "sha256": "02bf7ede7a83407e8068a113a9a915010032d2c580547315f57acd863da67db5"
     },
     {
       "path": "scripts/adapters.py",
@@ -257,6 +247,11 @@
       "sha256": "8e8f3eb1d858b3503cff49a006a785de2893fc83ed75525b44e2886dd0bbe0e7"
     },
     {
+      "path": "scripts/render_single_factor.py",
+      "bytes": 1804,
+      "sha256": "5b7bb62f6169b5c8bb57799d214f95330eefd47404361f651f83f2829eccc168"
+    },
+    {
       "path": "scripts/requirements.txt",
       "bytes": 60,
       "sha256": "af89ba23ea98fb0c728ff13b9ac896ad7736a56766b05cfc87c41a1b3c1fee32"
@@ -283,8 +278,8 @@
     },
     {
       "path": "SKILL.md",
-      "bytes": 11745,
-      "sha256": "24dd27238839bca706373ab6b0860cc2b82537f213085acd6c5d4a49800dc29e"
+      "bytes": 11696,
+      "sha256": "363dacd0d105850f11f47b49e8b52f4edd094d90661b8a9bb7a9b35cbe5410e7"
     },
     {
       "path": "verification/existing-result-date-audit.json",

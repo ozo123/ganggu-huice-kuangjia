@@ -1,11 +1,8 @@
 {
   "passed": true,
-  "specification_version": "2026-09-29.train2010-2022-rolling20-single-template-v7",
-  "archive": "hk-factor-backtest-20d-2010-2022-single-template-v7.zip",
-  "archive_sha256": "88e4f741a00767d39e3b08c48c57104cb80bf2142a97a73fbbb2af515f5911b5",
-  "archive_bytes": 2823953,
-  "packaged_file_count": 49,
-  "all_packaged_bytes_match_sources": true,
-  "zip_crc_passed": true,
-  "validation_scope": "Skill and template update; archive byte verification. No new backtest or engine certification."
+  "version": "2026-09-29.generic-single-visual-v8",
+  "zip": "hk-factor-backtest-generic-single-visual-v8.zip",
+  "sha256": "07d67869cfd65677745a9c7085617f91d6dfda73d491d85d48a7335e0b7da575",
+  "zip_crc_and_bytes_verified": true,
+  "scope": "generic presentation only; no backtest certification"
 }

@@ -1,0 +1,1 @@
+window.SINGLE_FACTOR_REPORT={"meta":{"title":"单因子回测报告","source":"通用模板 · 尚未接入实验数据","description":"页面只定义展示方式，所有因子、评估设置和指标由本次实验提供。"},"factors":[],"contexts":[],"results":[],"correlations":[],"experiments":[],"method":[],"downloads":[]};

@@ -2,7 +2,7 @@
 
 港股单因子研究、多因子训练、每日滚动持仓及统一可视化的 skill 流程包。
 
-当前规范版本：`2026-09-29.train2010-2022-rolling20-single-template-v7`。
+当前规范版本：`2026-09-29.generic-single-visual-v8`。
 
 ## 核心口径
 
@@ -11,13 +11,13 @@
 - **2023–2025 仅用于冻结后的组合测试**，不能进入拟合、选库、调参、方向选择或 early stopping。
 - 默认 **20 个市场交易日持仓，每日滚动**：信号 t 收盘、t+1 开盘入场、t+21 收盘到期。已结算现金共享复用，停牌到期残仓独立管理。
 - 因子相关性采用训练期月末原始因子值 Pearson，按有效日期等权平均；不是 IC 序列相关性。
-- 单因子可视化固定采用 **视频三组合并-2026-0929-回测结果/dashboard.html** 模板；多因子组合继续采用 TA-Lib双因子库模板。包含完整单因子详情、渲染后的公式、经济含义推测、IC、分组、收益与指标。
+- 单因子可视化采用 **独立通用视觉模板**，只复用指定HTML的布局与交互，不携带三组历史实验数据；多因子组合继续采用 TA-Lib双因子库模板。包含完整单因子详情、渲染后的公式、经济含义推测、IC、分组、收益与指标。
 
 具体约束、例外与验收标准以 [SKILL.md](skills/hk-factor-backtest/SKILL.md) 及其引用文档为准。
 
 ## 文件入口
 
-- [最新完整流程包 ZIP](dist/hk-factor-backtest-20d-2010-2022-single-template-v7.zip) 与 [SHA-256](dist/hk-factor-backtest-20d-2010-2022-single-template-v7.zip.sha256)
+- [最新完整流程包 ZIP](dist/hk-factor-backtest-generic-single-visual-v8.zip) 与 [SHA-256](dist/hk-factor-backtest-generic-single-visual-v8.zip.sha256)
 - [Skill 主流程](skills/hk-factor-backtest/SKILL.md)
 - [单因子口径](skills/hk-factor-backtest/references/standalone-methodology.md)
 - [多因子训练与冻结测试](skills/hk-factor-backtest/references/multifactor-workflow.md)
@@ -31,7 +31,7 @@
 
 将 `skills/hk-factor-backtest` 目录安装到 Codex 的 skills 目录后，使用 `$hk-factor-backtest` 并明确提供本次因子定义、行情目录、执行入口和来源名称。也可直接阅读 SKILL.md 按流程执行。已有同名 skill 时先核对版本和本地修改。
 
-本仓库交付的是 **v7 流程、模板、配置和继承参考源码**。`scripts` 内的旧引擎尚未通过 v6 的 20 日、开盘入场、共享现金与统一报告验收；仍含旧周期常量和旧报告实现。正式运行前须按流程适配指定入口并完成数值与页面验收，不能直接用示例配置把旧实现视为 v6 引擎。
+本仓库交付的是 **v8 流程、通用视觉模板、配置和继承参考源码**。`scripts` 内的旧引擎尚未通过 v6 的 20 日、开盘入场、共享现金与统一报告验收；仍含旧周期常量和旧报告实现。正式运行前须按流程适配指定入口并完成数值与页面验收，不能直接用示例配置把旧实现视为 v6 引擎。
 
 项目根目录的 `run_backtest.py` 是输出目录管理启动器，不会替代上述引擎适配。使用时显式指定入口与数据，先以 `--dry-run` 检查命令。新结果统一写入本地 `output/来源-YYYY-MMDD-回测结果`，不得覆盖历史批次。
 
@@ -45,4 +45,8 @@
 
 ## 单因子模板更新
 
-所有新单因子报告和旧报告重建均使用 [单因子模板规范](skills/hk-factor-backtest/references/single-factor-report.md) 与 [页面、样式和交互快照](skills/hk-factor-backtest/assets/single-factor-20260929/template.json)。保留六页签、收益同图对比、完整因子详情、排版公式和经济含义。历史重建保留原口径；模板不固定本次数据和作者，也不代表旧引擎已完成适配。
+所有新单因子报告和旧报告重建均使用 [单因子模板规范](skills/hk-factor-backtest/references/single-factor-report.md) 与 [页面、样式和交互快照](skills/hk-factor-backtest/assets/single-factor-generic/template.json)。保留六页签、收益同图对比、完整因子详情、排版公式和经济含义。历史重建保留原口径；模板不固定本次数据和作者，也不代表旧引擎已完成适配。
+
+通用模板不内置历史因子、作者、阶段、日期、持有期或绩效；空页面可直接预览。使用 `scripts/render_single_factor.py --data <本次JSON> --output <本次目录>` 渲染，数据接口见 [说明](skills/hk-factor-backtest/references/single-factor-data.md)。旧v7仅保留为历史下载，不作为默认模板。
+
+通用模板不内置历史因子、作者、阶段、日期、持有期或绩效；空页面可直接预览。使用 `scripts/render_single_factor.py --data <本次JSON> --output <本次目录>` 渲染，数据接口见 [说明](skills/hk-factor-backtest/references/single-factor-data.md)。旧v7仅保留为历史下载，不作为默认模板。

@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "empty_template_has_no_experiment_data": true,
+  "independent_synthetic_input_rendered": true,
+  "invalid_sequence_length_rejected": true,
+  "browser_formula_and_search_checked": true,
+  "mobile_viewport_width": 375,
+  "mobile_document_width": 375,
+  "console_errors": 0,
+  "real_backtest_rerun": false
+}

@@ -1,0 +1,33 @@
+{
+  "version": "2026-09-29.generic-single-visual-v8",
+  "scope": "generic single-factor visual design only",
+  "visual_reference": "User-approved dashboard.html; historical experiment data excluded",
+  "data_interface": "../../references/single-factor-data.md",
+  "renderer": "../../scripts/render_single_factor.py",
+  "files": [
+    {
+      "path": "dashboard.html",
+      "sha256": "eb356c149acc9f8bfe4b3a3e4f144285eeaad3a5eae1583b847e20450734820b"
+    },
+    {
+      "path": "report-data.js",
+      "sha256": "f850540852383d0716d11374c70c529d9e79f4c80b51a3bfa8eaee7edd55c255"
+    },
+    {
+      "path": "assets/plotly.min.js",
+      "sha256": "6d21266ce1bd7d9e5ab4e115989c70c20de0382fd973a8f26ab58619eba4d603"
+    },
+    {
+      "path": "assets/report.css",
+      "sha256": "e4a049da5d90c7c27cef7c706dc9df0eccfa9c7f0ac7add31e610ef26e2456e3"
+    },
+    {
+      "path": "assets/report.js",
+      "sha256": "907b132913f03c86cb36184c787c1f8a3c7ce4ecfae700dad91c1cbb4968d80e"
+    },
+    {
+      "path": "assets/style.css",
+      "sha256": "e51b2290a633865cd184105dc43d6c30e716091fda69b5a7efccbbf2c6a223dd"
+    }
+  ]
+}
