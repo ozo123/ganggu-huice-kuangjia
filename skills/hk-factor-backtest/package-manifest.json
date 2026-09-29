@@ -1,0 +1,234 @@
+{
+  "skill": "hk-factor-backtest",
+  "specification_version": "2026-09-29.train2010-2022-rolling20-talib-v6",
+  "created_at_utc": "2026-09-29T08:44:22.472083+00:00",
+  "package_kind": "workflow, report template, configuration examples and legacy reference source",
+  "default_hold_days": 20,
+  "rolling": "daily; settled cash shared; overdue positions separate",
+  "single_factor_window": [
+    "2010-01-01",
+    "2022-12-31"
+  ],
+  "training_window": [
+    "2010-01-01",
+    "2022-12-31"
+  ],
+  "frozen_portfolio_test_window": [
+    "2023-01-01",
+    "2025-12-31"
+  ],
+  "training_labels": "signal, entry and maturity within training window; purge late labels",
+  "report_template": "TA-Lib双因子库2010-2022-2026-0928-回测结果",
+  "template_assets": "assets/talib-20260928/template.json",
+  "existing_result_date_audit": "verification/existing-result-date-audit.json",
+  "execution_status": {
+    "workflow_and_template_updated": true,
+    "existing_result_date_audit_passed": true,
+    "existing_result_hold_days": 21,
+    "historical_results_recomputed_or_relabelled": false,
+    "new_20_day_backtest_executed": false,
+    "legacy_engine_certified_for_v6": false,
+    "note": "scripts与四个旧standalone/dashboard资源为继承参考实现。旧引擎仍含1/5/21日常量、收盘入场、旧相关性和旧页面；必须按SKILL.md与references适配、检验后才可执行新回测。原TA-Lib快照仅供模板适配，不是新回测结果。"
+  },
+  "excluded": [
+    "assets/local_config.json",
+    "scripts/pipeline.py",
+    "scripts/publish.py",
+    "references/methodology.md",
+    "references/dashboard.md",
+    "references/adapters.md",
+    "assets/dashboard.js",
+    "assets/chart-area.html",
+    "assets/registry.js",
+    "old implementation test files",
+    "__pycache__ and compiled caches",
+    "raw market data, fitted models and historical backtest datasets"
+  ],
+  "files": [
+    {
+      "path": "SKILL.md",
+      "bytes": 11478,
+      "sha256": "427b726d7eacc06b9df195fb3d470cd8ab77cd1d71f7f762ae0ab76ba373cbd8"
+    },
+    {
+      "path": "agents/openai.yaml",
+      "bytes": 465,
+      "sha256": "d7d7409ea0ee8114fd9963e060a411d8a08b7e129f8d13c6408f386eda473711"
+    },
+    {
+      "path": "assets/dashboard.css",
+      "bytes": 15612,
+      "sha256": "4e56b0455589f30f000775e3454164f90f73d6734fc2fae4dc3ddb410364279b"
+    },
+    {
+      "path": "assets/example_config.json",
+      "bytes": 563,
+      "sha256": "d0d42b0a71e7a1c090def0860d33fb7463087e3cc350ee72c481ea589c55dff5"
+    },
+    {
+      "path": "assets/example_factors.json",
+      "bytes": 1099,
+      "sha256": "78d7530dc894f3a8bc7efa8626347d3258fec061e93673d757379b8a80b1cf4b"
+    },
+    {
+      "path": "assets/example_multifactor_config.json",
+      "bytes": 1064,
+      "sha256": "9938e848ba29fbb03275eb65ce96e2a7841bf4e4ec43849469faa65266ae6564"
+    },
+    {
+      "path": "assets/standalone-charts.html",
+      "bytes": 17604,
+      "sha256": "3fe781287b7cec885f492189d612a9bf1b9a0e8e2a5bcb690b73e2765fd6287d"
+    },
+    {
+      "path": "assets/standalone-dashboard.js",
+      "bytes": 77573,
+      "sha256": "cafa0720834a5a090cf3aec4fcd82f65c36207444743bca3b795fe853d430c72"
+    },
+    {
+      "path": "assets/standalone.css",
+      "bytes": 3779,
+      "sha256": "64c15cff32c43b455084aaa784dae438fec119af412d8e00e7868cbc51268afc"
+    },
+    {
+      "path": "assets/talib-20260928/assets/app.reference.js",
+      "bytes": 10256,
+      "sha256": "2e9ecfac152c431658c9ddba876e4043a361e4919730bc5660cf609dcc52d265"
+    },
+    {
+      "path": "assets/talib-20260928/assets/factor.reference.js",
+      "bytes": 5215,
+      "sha256": "501f224c6b42d2df90705ab1b719ec56705b2ac8b2d5cb6016037145269dccd9"
+    },
+    {
+      "path": "assets/talib-20260928/assets/plotly.min.js",
+      "bytes": 4558696,
+      "sha256": "6d21266ce1bd7d9e5ab4e115989c70c20de0382fd973a8f26ab58619eba4d603"
+    },
+    {
+      "path": "assets/talib-20260928/assets/style.css",
+      "bytes": 3891,
+      "sha256": "e51b2290a633865cd184105dc43d6c30e716091fda69b5a7efccbbf2c6a223dd"
+    },
+    {
+      "path": "assets/talib-20260928/dashboard.reference.html",
+      "bytes": 7952,
+      "sha256": "63409fad4d44fe367a808d79296a2934e14319c7221a41f00a625fc9610b0e58"
+    },
+    {
+      "path": "assets/talib-20260928/factor.reference.html",
+      "bytes": 2511,
+      "sha256": "015480892a66d006dde72e92d7b41175f5e6d9e3ea96c8c25b5927cb503d9d0d"
+    },
+    {
+      "path": "assets/talib-20260928/template.json",
+      "bytes": 3027,
+      "sha256": "d17bf27fd1920ec14c9526cd6acbfc7a8f56035ba35d693ee4551f41a29aafc7"
+    },
+    {
+      "path": "references/multifactor-workflow.md",
+      "bytes": 10383,
+      "sha256": "86a2b07e2a4eaebc3bb69444918daa1b76766848545633edc23ed20c87423d4d"
+    },
+    {
+      "path": "references/rolling-execution.md",
+      "bytes": 7068,
+      "sha256": "daac5d061c942626295963ad15d31487616af62e6146861e753fafbecde1bb12"
+    },
+    {
+      "path": "references/standalone-inputs.md",
+      "bytes": 6085,
+      "sha256": "08b933961bf671e3cc272379eb9fa3157950a765560604a02b2aa3269eb1c26f"
+    },
+    {
+      "path": "references/standalone-methodology.md",
+      "bytes": 9235,
+      "sha256": "114b7a11d6f32c59529c0a3003f5cad4baa3a69f498beac9030bb1201724ae4d"
+    },
+    {
+      "path": "references/standalone-report.md",
+      "bytes": 11286,
+      "sha256": "14dea608dfc3348a87fa4b14419ceeb56c3197cd2d0b8d561b889442a1a00968"
+    },
+    {
+      "path": "scripts/adapters.py",
+      "bytes": 4117,
+      "sha256": "ab2a2946ed55592e140371eeb96677499e5ddab952ef454ddf21e5d4b49e7e07"
+    },
+    {
+      "path": "scripts/backtest_core.py",
+      "bytes": 6624,
+      "sha256": "a83eb25a33b7e6430ea78a5b7f8488e7b6889e822983dbfc592fb72c50595b03"
+    },
+    {
+      "path": "scripts/daily_data.py",
+      "bytes": 16453,
+      "sha256": "7ebf78994375b4419a01265dca5f80980305fcd3a17637135cb522e15556d170"
+    },
+    {
+      "path": "scripts/engine/__init__.py",
+      "bytes": 73,
+      "sha256": "1d038a987cefede22d78a26ecab76aa44dcc42f5ed4e22d3085e657747463e53"
+    },
+    {
+      "path": "scripts/engine/capped_engine.py",
+      "bytes": 6567,
+      "sha256": "60748fb8fedea93b9c5d0a177f4a95693b50786ff375e2ac4dd65b3273471bbe"
+    },
+    {
+      "path": "scripts/engine/cash_coefficients.py",
+      "bytes": 1900,
+      "sha256": "0964cef6429341ac208f6abd4b38ca4c34f1e75e4ead5bcc932239c639d49b7a"
+    },
+    {
+      "path": "scripts/engine/groups.py",
+      "bytes": 1286,
+      "sha256": "83a360380c535e09c5e8e8d6e9df4f96bba6d1c975da18020ab6dbad28a14583"
+    },
+    {
+      "path": "scripts/engine/ic.py",
+      "bytes": 8103,
+      "sha256": "20c8131e83e4dc1e6866001e49312e7061092e57c9ad7416ea748ee160d6d4b5"
+    },
+    {
+      "path": "scripts/engine/rolling.py",
+      "bytes": 2839,
+      "sha256": "ec1cf539cee9850a6618d33b8bea9f4c277bb4dc695110b1c4af93f7afb13043"
+    },
+    {
+      "path": "scripts/factor_contract.py",
+      "bytes": 6742,
+      "sha256": "8e8f3eb1d858b3503cff49a006a785de2893fc83ed75525b44e2886dd0bbe0e7"
+    },
+    {
+      "path": "scripts/requirements.txt",
+      "bytes": 60,
+      "sha256": "af89ba23ea98fb0c728ff13b9ac896ad7736a56766b05cfc87c41a1b3c1fee32"
+    },
+    {
+      "path": "scripts/run.py",
+      "bytes": 16218,
+      "sha256": "9af160a67451d4ac499b5b4f7ccf98d9a2aa83f852f0db6180a75fa3e7e95711"
+    },
+    {
+      "path": "scripts/select_factors.py",
+      "bytes": 5301,
+      "sha256": "f5921e737786804ba644941d0ec6af6bdc8c865057dd25494a8e65af34ea1107"
+    },
+    {
+      "path": "scripts/standalone_report.py",
+      "bytes": 9529,
+      "sha256": "a487c5a7033d428cee9e7eb8fa04e29cd011078b07e82ff0b07dea95e70b731a"
+    },
+    {
+      "path": "scripts/standalone_utils.py",
+      "bytes": 1897,
+      "sha256": "0a7f4a253b4fa5baf3aeca2b3e6b8dccfb81cb19b92770f4cc7c74c16d222d5f"
+    },
+    {
+      "path": "verification/existing-result-date-audit.json",
+      "bytes": 38941,
+      "sha256": "0669216ea08a3df15c2c18e3773f464d63d4d9ae72d13fdbf6aa209cc7f92da2"
+    }
+  ]
+}

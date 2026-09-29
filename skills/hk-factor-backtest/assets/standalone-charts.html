@@ -1,0 +1,265 @@
+    <section class="section" id="overview" aria-labelledby="overview-title">
+      <div class="section-head">
+        <div>
+          <h2 id="overview-title">因子效果总览</h2>
+          <p>先判断给定因子整体有没有横截面区分能力，再挑选单因子下钻。散点每点是一个因子，横轴平均 IC、纵轴年化多空净收益；点可点击。</p>
+        </div>
+        <div class="controls">
+          <label class="field">复权口径<select id="ov-mode"></select></label>
+          <label class="field">持仓期<select id="ov-hold"></select></label>
+        </div>
+      </div>
+
+      <div class="verdict">
+        <div class="hero">
+          <small id="ov-hero-label">—</small>
+          <span id="ov-hero">—</span>
+        </div>
+        <div class="secondary" id="ov-metrics"></div>
+      </div>
+      <p class="data-alert" id="ov-adjustment-warning" hidden>现金版使用日线推断的现金与股数账本，不自动认购供股；公司行动推断边界见方法说明。</p>
+
+      <div class="grid">
+        <section class="panel span8">
+          <div class="panel-head">
+            <h3>因子分布：定向后 IC × 年化多空净收益</h3>
+            <span class="aside" id="ov-scatter-aside">—</span>
+          </div>
+          <p class="sub">横轴为 Spearman Rank IC 均值，纵轴为年化多空净收益。所有可计算因子均保留；横轴为翻转后的 IC，未入选因子不会从散点中删除。年化收益未做市场、行业或风格风险调整；点击点查看因子。</p>
+          <div class="legend" id="ov-legend"></div>
+          <div class="chart-host">
+            <svg class="chart" id="ov-scatter" viewBox="0 0 900 380" role="img" aria-label="因子平均 IC 与年化多空净收益 散点图"></svg>
+            <div class="readout" id="ov-scatter-readout">把指针移到点上查看因子；点击即切换。</div>
+          </div>
+        </section>
+
+        <section class="panel span4">
+          <div class="panel-head"><h3>六种设置的 年化收益中位数</h3></div>
+          <p class="sub">2 种复权口径 × 3 个持仓期，各自取已测因子的年化多空净收益中位数。每种口径的因子集合在三个持仓期保持一致。</p>
+          <div class="chart-host">
+            <svg class="chart" id="ov-median" viewBox="0 0 420 272" role="img" aria-label="六种设置的年化多空净收益 中位数"></svg>
+          </div>
+          <p class="note" id="ov-median-note">—</p>
+        </section>
+
+
+
+
+      </div>
+    </section>
+
+    <section class="section" id="correlation" aria-labelledby="corr-title">
+      <div class="section-head"><div><h2 id="corr-title">因子之间的相关性</h2><p>与预测未来收益的 IC 分开：这里检验两个因子是否提供相似的横截面排序。各月最后可用交易日逐对取共同证券、重新排序，再按日期等权平均。</p></div>
+        <div class="controls"><label class="field">矩阵来源<select id="corr-source"><option value="new">当前全部已测因子</option></select></label><label class="field">复权口径<select id="corr-mode"></select></label><label class="field">显示分类<select id="corr-group"></select></label><label class="field">最少有效月份<select id="corr-min"><option value="1" selected>1 个月</option><option value="12">12 个月</option><option value="60">60 个月</option></select></label></div>
+      </div>
+      <div class="corr-grid"><div><div class="matrix-wrap"><canvas id="corr-matrix" width="780" height="780" aria-label="已测因子 Spearman 相关矩阵"></canvas></div><div class="corr-scale"><span>−1 反向</span><i></i><span>+1 同向</span><span>灰色：不可定义或覆盖不足</span></div><p class="readout" id="corr-readout">把指针移到矩阵查看因子对；点击行因子进入详情。</p></div>
+        <div><h3 id="corr-neighbors-title">当前因子的相关性</h3><p class="sub">按 |ρ| 排序；负值表示反向信息，同样可能冗余。覆盖率和月数可用于判断估计是否稳定。</p><div class="scroll"><table><thead><tr><th>因子</th><th>ρ</th><th>月份</th><th>平均证券数</th></tr></thead><tbody id="corr-neighbors"></tbody></table></div><p class="note" id="corr-note"></p><div class="audit-links"><a id="corr-download" href="audit-v2/correlation/matrix_reinvest.csv" download>下载当前集合矩阵 CSV</a></div></div></div>
+    </section>
+<section id="overview-extra" class="section"><div class="grid">        <section class="panel span4">
+          <div class="panel-head">
+            <h3>已测因子 IC 与预测窗口</h3>
+            <span class="aside">每日信号</span>
+          </div>
+          <p class="sub">比较 1 / 5 / 21 日预测窗口的 Rank IC 中位数。各点分别计算，窗口间差异不等于交易收益差异。</p>
+          <div class="chart-host">
+            <svg class="chart" id="ov-decay" viewBox="0 0 420 250" role="img" aria-label="已测因子 IC 随预测窗口的中位曲线"></svg>
+          </div>
+          <p class="note" id="ov-decay-note">—</p>
+        </section>        <section class="panel span8">
+          <div class="panel-head">
+            <h3>当前切片的因子排名</h3>
+            <span class="aside" id="ov-rank-aside">—</span>
+          </div>
+          <p class="sub">按年化多空净收益 排序取前 10 与后 10。点击因子名进入下方详情；也可用下方的因子选择器直接跳转。</p>
+          <div class="ranking">
+            <ul class="rank-list" id="ov-top" aria-label="收益前 10 因子"></ul>
+            <ul class="rank-list" id="ov-bottom" aria-label="收益后 10 因子"></ul>
+          </div>
+        </section></div></section>    <!-- ── 单因子 ─────────────────────────────────────────── -->
+    <section class="section" id="factor" aria-labelledby="factor-title">
+      <div class="section-head factor-heading">
+        <div>
+          <h2 id="factor-title">单因子详情</h2>
+          <p>选定因子的多空净值、分组结构、持仓期与年化净收益与 IC 表现。切换口径或持仓期后，同一因子在不同设定下的差异会直接反映在图上。
+          当前列表依据同一口径与持仓期的筛选结果；原 IC 与方向翻转标记同时保留。</p>
+        </div>
+        <aside class="factor-calculation" aria-labelledby="formula-label">
+          <h3 id="formula-label">公式与计算方法</h3>
+          <pre id="factor-formula"></pre>
+          <p id="factor-formula-parameters"></p>
+          <p id="factor-formula-method"></p>
+          <p id="factor-formula-notes"></p>
+          <p id="factor-formula-direction"></p>
+        </aside>
+      </div>
+
+      <div class="factor-bar">
+        <label class="field wide">因子（可输入过滤）
+          <input id="f-search" type="search" list="f-list" placeholder="输入因子名称或ID或从上方候选表选择" autocomplete="off">
+          <datalist id="f-list"></datalist>
+        </label>
+        <label class="field">复权口径<select id="f-mode"></select></label>
+        <label class="field">持仓期<select id="f-hold"></select></label>
+        <div class="spacer"></div>
+        <div class="rule" id="f-rule">Q01 最低值组 → 做空<br>Q20 最高值组 → 做多</div>
+      </div>
+      <p class="data-alert" id="factor-adjustment-warning" hidden>现金版使用不认购供股的持股与现金账本。因子信号保留供应商后复权输入，收益目标按修正后的持仓政策计算。</p>
+
+      <div class="verdict">
+        <div class="hero">
+          <small id="fv-label">—</small>
+          <span id="fv-nav">—</span>
+        </div>
+        <div class="secondary" id="fv-metrics"></div>
+      </div>
+
+      <div class="grid">
+        <section class="panel span12" id="capital">
+          <div class="panel-head"><h3>资金管理与实际敞口</h3><span class="aside" id="capital-aside">—</span></div>
+          <p class="sub">初始资金分 H 批，每日按计划开仓；多空组合每日收盘完成交易并扣费后，毛敞口≤100%。超限对全部未平仓批次同比例减仓并扣费，余仓保留原到期日。图中同时显示当日减仓前与执行后的敞口。</p>
+          <div class="capital-grid"><div><svg class="chart" id="capital-compare" viewBox="0 0 860 260" role="img" aria-label="实际多空毛敞口随时间变化"></svg><div class="legend"><span>青色：日终扣费后</span><span>灰色：当日减仓前</span><span>红虚线：100%上限</span></div></div><dl class="meta-list" id="capital-stats"></dl></div>
+          <p class="note" id="capital-limit"></p>
+        </section>
+        <section class="panel span12">
+          <div class="panel-head">
+            <h3>多空组合累计净值</h3>
+            <span class="aside" id="ls-aside">—</span>
+          </div>
+          <p class="sub" id="ls-method">Q20 做多、Q01 做空，单边 20bp。滚动版按每批实际买卖名义金额计费，逐日估值；回撤由未降采样的完整净值计算。</p>
+          <div class="chart-host">
+            <div class="legend"><span class="key"><span class="swatch" style="background:var(--ink)"></span>多空净值</span><span>下方：策略回撤</span></div>
+            <svg class="chart" id="ls-nav" viewBox="0 0 1200 330" role="img" aria-label="多空组合与恒生指数累计净值及策略回撤"></svg>
+            <p class="note" id="benchmark-note"></p>
+            <div class="readout" id="ls-readout">把指针移到图上查看逐期数值。</div>
+          </div>
+        </section>
+
+        <section class="panel span8">
+          <div class="panel-head">
+            <h3>累计收益对比</h3>
+            <span class="aside">20 个分组 + 多空</span>
+          </div>
+          <p class="sub">Q01 到 Q20 的独立分组累计净值，粗线为日终毛敞口不超过100%的多空组合。两腿各半指开仓资金分配，持仓期间的市值比例会变化。</p>
+          <div class="ramp" id="cum-ramp"></div>
+          <div class="legend" id="cum-legend"></div>
+          <div class="chart-host">
+            <svg class="chart" id="cum-nav" viewBox="0 0 860 360" role="img" aria-label="20 个分组与多空组合的累计收益对比"></svg>
+            <div class="readout" id="cum-readout">把指针移到图上查看该信号日的各组净值。</div>
+          </div>
+        </section>
+
+        <section class="panel span4">
+          <div class="panel-head"><h3>分组平均收益</h3></div>
+          <p class="sub">各组扣费后的算术年化平均收益，所有柱使用相同纵轴。由完整逐日组合收益计算。</p>
+          <div class="chart-host">
+            <svg class="chart" id="group-ret" viewBox="0 0 420 200" role="img" aria-label="20 个分组的年化平均净收益"></svg>
+            <div class="readout" id="group-ret-readout">把指针移到柱上查看该组的收益、波动与持仓统计。</div>
+          </div>
+          <div class="scroll">
+            <table>
+              <caption class="sub" style="text-align:left;caption-side:top;padding-bottom:8px">分组明细</caption>
+              <thead><tr><th>组合</th><th>年化收益</th><th>波动率</th><th>最终净值</th><th>净夏普</th><th>毛夏普</th></tr></thead>
+              <tbody id="group-table"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="panel span4">
+          <div class="panel-head"><h3>分组收益波动率</h3></div>
+          <p class="sub">各组年化波动率。风险集中在单侧时，多空价差的稳定性依赖于该侧。</p>
+          <div class="chart-host">
+            <svg class="chart" id="group-vol" viewBox="0 0 420 200" role="img" aria-label="20 个分组的年化收益波动率"></svg>
+          </div>
+          <p class="note" id="group-vol-note">—</p>
+        </section>
+
+        <section class="panel span4">
+          <div class="panel-head"><h3>持仓期与年化净收益</h3></div>
+          <p class="sub">比较同一因子的 1 / 5 / 21 日每日滚动组合年化净收益，两种复权口径分别显示。</p>
+          <div class="chart-host">
+            <svg class="chart" id="alpha-decay" viewBox="0 0 420 250" role="img" aria-label="不同持仓期的滚动多空年化净收益"></svg>
+            <div class="readout" id="decay-readout">—</div>
+          </div>
+        </section>
+
+        <section class="panel span4">
+          <div class="panel-head">
+            <h3>IC 分布</h3>
+            <span class="aside" id="icdist-aside">—</span>
+          </div>
+          <p class="sub">逐信号日 IC 的直方分布。分布是否大体落在零的一侧、以及离散程度，决定 IC 均值是否可信。</p>
+          <div class="chart-host">
+            <svg class="chart" id="ic-dist" viewBox="0 0 420 200" role="img" aria-label="逐信号日 IC 的分布直方图"></svg>
+          </div>
+        </section>
+
+        <section class="panel span12">
+          <div class="panel-head"><h3>IC 指标与样本覆盖</h3><span class="aside" id="ic-method-label">—</span></div>
+          <p class="sub">Pearson IC 检验原始因子值与未来收益的线性关系；Rank IC 在两者共同有效的证券上重新平均秩排序。新版逐信号日计算 t+1 收盘至 t+1+H 收盘的未扣费收益，至少 20 只可交易证券；全样本保留，未来端点缺失只影响 IC 观测，不反向删选组合持仓。</p>
+          <div class="scroll"><table><thead><tr><th>指标</th><th>均值</th><th>标准差</th><th>ICIR</th><th id="ic-t-column">HAC t 值</th><th>IC &gt; 0</th><th>有效日期</th></tr></thead><tbody id="ic-extra"></tbody></table></div>
+          <p class="note" id="ic-extra-note"></p>
+        </section>
+
+        <section class="panel span8">
+          <div class="panel-head">
+            <h3>IC 时序</h3>
+            <span class="aside" id="icts-aside">—</span>
+          </div>
+          <p class="sub">完整信号日 Rank IC（红负青正）叠加 12 个观测位置的滚动均值。全部为每日序列；直方图与均值使用同一完整样本。</p>
+          <div class="chart-host">
+            <svg class="chart" id="ic-ts" viewBox="0 0 860 240" role="img" aria-label="逐信号日 IC 与滚动均值"></svg>
+            <div class="readout" id="icts-readout">把指针移到图上查看该期 IC。</div>
+          </div>
+        </section>
+
+        <section class="panel span4">
+          <div class="panel-head">
+            <h3>累计 IC</h3>
+            <span class="aside" id="cumic-aside">—</span>
+          </div>
+          <p class="sub">逐日 IC 的累加，用于观察样本内相关方向随时间的变化。它不是策略收益，也不能单独证明样本外有效性。</p>
+          <div class="chart-host">
+            <svg class="chart" id="cum-ic" viewBox="0 0 420 240" role="img" aria-label="累计 IC 曲线"></svg>
+          </div>
+        </section>
+
+        <section class="panel span12">
+          <div class="panel-head">
+            <h3>分组持仓只数</h3>
+            <span class="aside" id="cnt-aside">—</span>
+          </div>
+          <p class="sub" id="count-method">显示当日所有批次的证券持仓条目数，同一股票在不同批次重复计数。未成交、空组和未启动批次保持现金。</p>
+          <div class="chart-host">
+            <svg class="chart" id="hold-count" viewBox="0 0 1200 360" role="img" aria-label="各分组逐信号日持仓只数热力图"></svg>
+            <div class="readout" id="cnt-readout">把指针移到图上查看该信号日该组的持仓只数。</div>
+          </div>
+        </section>
+
+        <section class="panel span12">
+          <div class="panel-head"><h3>持仓记录与文件索引</h3></div>
+          <p class="sub">每个因子 × 复权口径 × 持仓期构成一个独立策略版本，持仓归属矩阵与进出场索引作为档案保存在 <code>audit-v2/</code>。</p>
+          <div class="grid" style="gap:26px">
+            <div class="span5">
+              <p class="block-head">口径与档案构成</p>
+              <dl class="meta-list" id="hold-meta"></dl>
+            </div>
+            <div class="span7">
+              <p class="block-head">当前因子的三个持仓期版本</p>
+              <div class="scroll" style="max-height:none">
+                <table>
+                  <thead><tr><th>策略版本</th><th>持仓矩阵</th><th>进出场数组</th><th>信号期数</th></tr></thead>
+                  <tbody id="hold-strategies"></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+          <div class="archive">
+            <span>策略索引 <code id="manifest-path">audit-v2/rolling_manifest.csv</code></span>
+            <span>读取说明 <code id="manifest-doc">audit-v2/README.md</code></span>
+            <span>逐信号日序列 <code class="pp" id="series-path">—</code></span>
+            <span>持仓矩阵 <code class="pp" id="groups-path">—</code></span>
+          </div>
+          <p class="note" id="factor-note">—</p>
+        </section>
+      </div>
+    </section>

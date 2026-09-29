@@ -1,0 +1,1368 @@
+{
+  "passed": true,
+  "source_result_batch": "Alpha191138因子滚动持仓修正TA-Lib模板-2026-0929-回测结果",
+  "validation": "Read-only date/row/label audit; no backtest or refitting executed",
+  "single_factor_window": [
+    "2010-01-01",
+    "2022-12-31"
+  ],
+  "training_window": [
+    "2010-01-01",
+    "2022-12-31"
+  ],
+  "historical_result_hold_days": 21,
+  "new_skill_default_hold_days": 20,
+  "single_factor_count": 138,
+  "single_factor_actual_dates": [
+    "2010-01-04",
+    "2022-12-30"
+  ],
+  "training_rows": 1666860,
+  "training_rows_after_2022": 0,
+  "training_labels_after_2022": 0,
+  "all_frozen_model_hashes_match": true,
+  "models": [
+    {
+      "model": "equal",
+      "train_rows": 1666860,
+      "first_train_signal": "2010-07-05",
+      "last_train_signal": "2022-11-28",
+      "last_train_label": "2022-12-30",
+      "model_sha256": "3305d4dca59e34340725a66b65bad9cb6ef0f6c7a7dae984f1beadb70b385b26"
+    },
+    {
+      "model": "ridge",
+      "train_rows": 1666860,
+      "first_train_signal": "2010-07-05",
+      "last_train_signal": "2022-11-28",
+      "last_train_label": "2022-12-30",
+      "model_sha256": "a8e41898c465da74abff2fc3bc2aa1bad44ac2cbd5116e170fbf700f72553ed5"
+    },
+    {
+      "model": "lightgbm",
+      "train_rows": 1666860,
+      "first_train_signal": "2010-07-05",
+      "last_train_signal": "2022-11-28",
+      "last_train_label": "2022-12-30",
+      "model_sha256": "fad534852aa1f4b0adf2e756a927d8fdcea72c9ba76bef748017abebb432aefe"
+    }
+  ],
+  "single_factors": [
+    {
+      "factor_id": "alpha001",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1490600,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha002",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1689409,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha003",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694312,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha004",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1693388,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha005",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1583527,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha006",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694533,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha007",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1689723,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha008",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1688596,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha009",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1677739,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha010",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692577,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha011",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1672969,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha012",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1669087,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha013",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694533,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha015",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694533,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha016",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1420908,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha017",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1656494,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha020",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694381,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha021",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1693893,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha022",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692902,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha023",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1690737,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha025",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1545331,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha026",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1255138,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha027",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1693130,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha028",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1685799,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha029",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694381,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha032",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1518948,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha033",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1556524,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha035",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1690986,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha036",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1462133,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha037",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1693668,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha038",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692902,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha039",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1504843,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha040",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1691969,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha041",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1674838,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha042",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1693692,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha043",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694312,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha044",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1621749,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha045",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1604870,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha048",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692902,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha049",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1693631,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha052",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692057,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha054",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1693631,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha055",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1660054,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha056",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1686997,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha057",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1693116,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha059",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692794,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha060",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1615827,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha061",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1310378,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha062",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1521816,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha064",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1215327,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha069",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692794,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha070",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694424,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha072",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1685970,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha073",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1671481,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha074",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1453036,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha076",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1643271,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha077",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1610947,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha078",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692564,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha080",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1687070,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha081",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692794,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha083",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1524592,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha084",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692794,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha085",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1687793,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha086",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694049,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha087",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1209656,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha089",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1691085,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha091",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1686280,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha092",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1578009,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha093",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692794,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha094",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1691659,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha098",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1601033,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha101",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1383116,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha102",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694312,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha103",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692902,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha104",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1683271,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha105",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1404044,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha107",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694533,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha108",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1666415,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha109",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1693016,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha110",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692667,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha111",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1650493,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha113",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1513943,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha114",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692614,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha115",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1664183,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha116",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692902,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha117",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1691427,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha118",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692778,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha119",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1154494,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha120",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694533,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha121",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1475089,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha122",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1690852,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha123",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1683028,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha124",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1642442,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha125",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1600170,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha127",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692571,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha128",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1693460,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha130",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1417178,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha131",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1680366,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha134",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694294,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha135",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1690511,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha136",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1693816,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha137",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694238,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha138",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 79444,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha140",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 953126,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha141",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1419245,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha142",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1691600,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha143",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694533,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha144",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1685644,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha145",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692234,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha146",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1680940,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha148",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1685767,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha150",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694533,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha151",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1690624,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha152",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1689079,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha154",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1563938,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha155",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1691085,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha156",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1677437,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha157",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1490445,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha158",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1693469,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha159",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692319,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha162",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1691964,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha163",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692902,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha164",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1641263,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha166",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1690624,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha169",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1690054,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha170",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1685831,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha171",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1566167,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha172",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1691371,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha176",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1489838,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha177",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1692902,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha178",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694533,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha179",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1368445,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha180",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1690886,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha184",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1599906,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha185",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1694533,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha188",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1693893,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha190",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1689754,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    },
+    {
+      "factor_id": "alpha191",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30",
+      "days": 3204,
+      "value_rows": 1688560,
+      "last_observed_value_date": "2022-12-30",
+      "matured_ic_boundary_passed": true
+    }
+  ],
+  "portfolios": [
+    {
+      "key": "equal_test_groups20",
+      "scope": "test",
+      "first_date": "2023-01-03",
+      "last_date": "2025-12-31"
+    },
+    {
+      "key": "equal_test_top20",
+      "scope": "test",
+      "first_date": "2023-01-03",
+      "last_date": "2025-12-31"
+    },
+    {
+      "key": "equal_train_groups20",
+      "scope": "train",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30"
+    },
+    {
+      "key": "equal_train_top20",
+      "scope": "train",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30"
+    },
+    {
+      "key": "lightgbm_test_groups20",
+      "scope": "test",
+      "first_date": "2023-01-03",
+      "last_date": "2025-12-31"
+    },
+    {
+      "key": "lightgbm_test_top20",
+      "scope": "test",
+      "first_date": "2023-01-03",
+      "last_date": "2025-12-31"
+    },
+    {
+      "key": "lightgbm_train_groups20",
+      "scope": "train",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30"
+    },
+    {
+      "key": "lightgbm_train_top20",
+      "scope": "train",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30"
+    },
+    {
+      "key": "ridge_test_groups20",
+      "scope": "test",
+      "first_date": "2023-01-03",
+      "last_date": "2025-12-31"
+    },
+    {
+      "key": "ridge_test_top20",
+      "scope": "test",
+      "first_date": "2023-01-03",
+      "last_date": "2025-12-31"
+    },
+    {
+      "key": "ridge_train_groups20",
+      "scope": "train",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30"
+    },
+    {
+      "key": "ridge_train_top20",
+      "scope": "train",
+      "first_date": "2010-01-04",
+      "last_date": "2022-12-30"
+    }
+  ]
+}

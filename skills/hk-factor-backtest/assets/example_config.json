@@ -1,0 +1,23 @@
+{
+  "data_root": null,
+  "factors": "example_factors.json",
+  "output": "./example-output",
+  "start": "2010-01-01",
+  "end": "2022-12-31",
+  "currency": "HKD",
+  "amount_unit": "HKD",
+  "ipo_dates_csv": null,
+  "allow_observed_age_proxy": true,
+  "holds": [20],
+  "modes": ["cash", "reinvest"],
+  "groups": 20,
+  "fee_one_way": 0.002,
+  "listing_age_months": 6,
+  "adv_days": 5,
+  "min_adv_hkd": 3000000,
+  "amount_comparison": ">",
+  "ic_orientation": "full_sample_per_setting",
+  "correlation_threshold": 0.8,
+  "min_ic": 0.01,
+  "min_correlation_months": 1
+}

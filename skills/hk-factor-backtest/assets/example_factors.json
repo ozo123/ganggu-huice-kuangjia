@@ -1,0 +1,8 @@
+{
+  "factors": [
+    {"id":"reversal20","name":"20日反转示例","definition":"负的20个交易日后复权收盘价收益率","frequency":"daily","required_fields":["close"],"expression":"-(close / lag(close, 20) - 1)","direction":1,"lookback":20},
+    {"id":"reversal20_copy","name":"相同因子去重示例","definition":"与20日反转完全相同，用于验证相关性去重","frequency":"daily","required_fields":["close"],"expression":"-(close / lag(close, 20) - 1)","direction":1,"lookback":20},
+    {"id":"volume_ratio5_20","name":"量比示例","definition":"原始成交量的5日均值除以20日均值","frequency":"daily","required_fields":["volume"],"expression":"mean(volume, 5) / mean(volume, 20)","direction":1,"lookback":20},
+    {"id":"orderflow_example","name":"逐笔订单流缺数据示例","definition":"逐笔主动买入成交额减主动卖出成交额","frequency":"tick","required_fields":["aggressive_buy_amount","aggressive_sell_amount"],"expression":"aggressive_buy_amount - aggressive_sell_amount","required_external_data":["逐笔主动买卖方向"]}
+  ]
+}

@@ -1,0 +1,16 @@
+__pycache__/
+*.pyc
+*.nbi
+*.nbc
+.venv/
+.env
+.env.*
+!.env.example
+output/
+outputs/
+data/
+*.parquet
+*.npy
+*.npz
+assets/local_config.json
+**/local_config.json

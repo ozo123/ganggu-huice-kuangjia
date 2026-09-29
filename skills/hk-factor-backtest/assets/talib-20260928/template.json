@@ -1,0 +1,58 @@
+{
+  "reference_batch": "TA-Lib双因子库2010-2022-2026-0928-回测结果",
+  "reference_project_path": "output/TA-Lib双因子库2010-2022-2026-0928-回测结果",
+  "skill_version": "2026-09-29.train2010-2022-rolling20-talib-v6",
+  "default_hold_days": 20,
+  "single_factor_period": ["2010-01-01", "2022-12-31"],
+  "training_period": ["2010-01-01", "2022-12-31"],
+  "frozen_portfolio_test_period": ["2023-01-01", "2025-12-31"],
+  "purpose": "统一可视化模板的原始页面、样式与交互参考；未打包任何历史回测数据，不能直接作为新结果发布。",
+  "reuse_rules": [
+    "原样复用 assets/style.css，扩展样式另存；保留原模板六页签、复选框同图比较、下方图例、可排序指标表及年度收益表。",
+    "dashboard.reference.html、app.reference.js、factor.reference.html、factor.reference.js 供阅读和适配，不是可直接发布的报告。",
+    "按新批实际数据替换全部旧标题、计数、周期、相关性文字、链接和日期；仅暴露已经计算的库、模型和复权口径。",
+    "默认20日每日滚动；只改skill时不重算或改标历史21日结果。",
+    "单因子回测、定向、筛选及多因子训练仅用2010–2022；训练信号、入场和标签到期均不得越界。2023–2025只显示冻结组合测试。",
+    "公式使用原生MathML或本地渲染器，附经济含义推测，单因子详情可访问全部观测与下载。",
+    "实际运行前核对引擎对20日和滚动现金的支持；技能规范更新不代表旧内置引擎已升级。",
+    "输出报告复制所需模板资源和本次数据，保持离线可用，不依赖原历史目录。"
+  ],
+  "files": [
+    {
+      "source_file": "dashboard.html",
+      "snapshot_file": "dashboard.reference.html",
+      "sha256": "63409fad4d44fe367a808d79296a2934e14319c7221a41f00a625fc9610b0e58",
+      "bytes": 7952
+    },
+    {
+      "source_file": "assets/style.css",
+      "snapshot_file": "assets/style.css",
+      "sha256": "e51b2290a633865cd184105dc43d6c30e716091fda69b5a7efccbbf2c6a223dd",
+      "bytes": 3891
+    },
+    {
+      "source_file": "assets/app.js",
+      "snapshot_file": "assets/app.reference.js",
+      "sha256": "2e9ecfac152c431658c9ddba876e4043a361e4919730bc5660cf609dcc52d265",
+      "bytes": 10256
+    },
+    {
+      "source_file": "assets/factor.js",
+      "snapshot_file": "assets/factor.reference.js",
+      "sha256": "501f224c6b42d2df90705ab1b719ec56705b2ac8b2d5cb6016037145269dccd9",
+      "bytes": 5215
+    },
+    {
+      "source_file": "assets/plotly.min.js",
+      "snapshot_file": "assets/plotly.min.js",
+      "sha256": "6d21266ce1bd7d9e5ab4e115989c70c20de0382fd973a8f26ab58619eba4d603",
+      "bytes": 4558696
+    },
+    {
+      "source_file": "factors/RSI__real/index.html",
+      "snapshot_file": "factor.reference.html",
+      "sha256": "015480892a66d006dde72e92d7b41175f5e6d9e3ea96c8c25b5927cb503d9d0d",
+      "bytes": 2511
+    }
+  ]
+}

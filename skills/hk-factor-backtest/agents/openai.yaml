@@ -1,0 +1,4 @@
+interface:
+  display_name: "港股标准化单因子与组合回测"
+  short_description: "单因子与训练限2010–2022，20日滚动及统一TA-Lib模板"
+  default_prompt: "使用 $hk-factor-backtest，仅以2010-01-01至2022-12-31数据完成单因子回测、筛选与Ridge/LightGBM训练；2023–2025只作冻结组合测试。默认20日每日滚动，按TA-Lib双因子库2010-2022-2026-0928-回测结果的统一模板输出报告与检验回执。"

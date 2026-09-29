@@ -1,0 +1,23 @@
+const F=window.FACTOR,$=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const finite=x=>x!==null&&x!==undefined&&Number.isFinite(Number(x)),num=(x,n=3)=>finite(x)?Number(x).toFixed(n):'—',pct=x=>finite(x)?(100*x).toFixed(2)+'%':'—';
+const config={responsive:true,displaylogo:false,toImageButtonOptions:{format:'png',scale:2}},base=()=>({paper_bgcolor:'#fff',plot_bgcolor:'#fff',font:{family:'Segoe UI,Microsoft YaHei,sans-serif',size:12,color:'#415969'},margin:{l:64,r:22,t:24,b:48},height:350,hovermode:'x unified',xaxis:{gridcolor:'#eef2ef'},yaxis:{gridcolor:'#e8eeea'},legend:{orientation:'h',y:1.12}});
+function table(id,headers,rows){$(id).innerHTML='<table><thead><tr>'+headers.map(h=>'<th>'+esc(h)+'</th>').join('')+'</tr></thead><tbody>'+rows.map(r=>'<tr>'+r.map(c=>'<td>'+esc(c)+'</td>').join('')+'</tr>').join('')+'</tbody></table>';}
+$('#factor-title').textContent=F.id;$('#factor-name').textContent=F.name+' · '+F.group;
+$('#formula').textContent=F.calculation.formula;$('#call').textContent=F.calculation.call;$('#calculation-note').textContent=F.calculation.note;
+if(window.katex&&F.calculation.formula_tex?.length){for(const tex of F.calculation.formula_tex.filter(x=>x.length>6)){const el=document.createElement('div');$('#math-formula').appendChild(el);katex.render(tex,el,{displayMode:true,throwOnError:false});}$('#formula').style.display='none';}
+$('#parameters').innerHTML='<p>实际参数：<code>'+esc(JSON.stringify(F.calculation.parameters))+'</code></p><p>输入映射：<code>'+esc(JSON.stringify(F.calculation.inputs))+'</code> · 输出：'+esc(F.calculation.output)+' · TA-Lib lookback：'+F.calculation.lookback+'</p>';
+$('#official').href=F.calculation.source;$('#native-source').href=F.calculation.native_source;
+function render(){
+  const mode=$('#factor-mode').value,d=F.modes[mode];if(d.failed){$('#direction-note').textContent='本口径计算失败：'+d.reason;return}
+  const m=d.metrics;$('#direction-note').textContent='原 Mean Rank IC = '+num(m.preorientation_rank_ic,6)+'；方向乘数 '+m.direction_multiplier+'；定向后 Mean IC = '+num(m.ic.mean,6)+'。'+(m.direction_multiplier===-1?'做多原始低值组、做空原始高值组。':'做多原始高值组、做空原始低值组。')+' 分组表已经按此方向重建。'+(!m.ls.active_entries?'本因子没有有效双边开仓，多空收益指标留空。':'');
+  if(F.selection){const r=F.selection[mode];$('#direction-note').textContent+=' 因子库：'+(r.library2?'同时进入 1、2 号库。':r.library1?'进入 1 号库，未达到 2 号库 IC 门槛。':r.reason+'。');if(r.blocked_by?.length)$('#direction-note').textContent+=' 冲突示例：'+r.blocked_by.slice(0,3).map(x=>x.factor_id+' (ρ='+num(x.rho,4)+')').join('、')+'。';}
+  let l=base();l.height=490;l.yaxis.title='扣费净值';Plotly.react('factor-nav',[{x:d.dates,y:d.ls,name:'20组两端 · 多空各半',type:'scatter',mode:'lines',line:{color:'#087f79',width:2}},{x:d.dates,y:d.lo,name:'最高组 · 只做多',type:'scatter',mode:'lines',line:{color:'#ba6138',width:2}}],l,config);
+  table('#factor-metrics',['策略','累计收益','CAGR','净 Sharpe','毛 Sharpe','最大回撤','年化波动','日胜率','年化费用率'],[['多空各半',m.ls,m.gross_ls],['只做多',m.group_metrics[19],m.group_gross_metrics[19]]].map(([name,x,g])=>[name,pct(x.cumulative_return),pct(x.cagr),num(x.sharpe),num(g.sharpe),pct(x.max_drawdown),pct(x.volatility),pct(x.win_rate),pct(x.annualized_fee_rate)]));
+  table('#factor-icmetrics',['原 Mean Rank IC','定向 Mean Rank IC','ICIR','IC 标准差','HAC t','有效天数','平均股票数','正 IC 占比','Mean Pearson IC'],[[num(m.preorientation_rank_ic,5),num(m.ic.mean,5),num(m.ic.ir),num(m.ic.std),num(m.ic.tstat),m.ic.n,num(d.mean_ic_stocks,1),pct(m.ic.positive_share),num(m.pearson_ic.mean,5)]]);
+  const labels=Array.from({length:20},(_,i)=>'Q'+String(i+1).padStart(2,'0'));l=base();l.yaxis.tickformat='.0%';l.yaxis.title='日均收益 × 252';Plotly.react('group-chart',[{x:labels,y:m.group_annualized_return,type:'bar',name:'净年化收益',marker:{color:labels.map((_,i)=>i===19?'#087f79':i===0?'#bb6851':'#a1bbb1')}}],l,config);
+  l=base();l.yaxis.title='累计 Rank IC';Plotly.react('ic-chart',[{x:d.dates,y:d.cum_ic,name:'累计 IC',type:'scatter',mode:'lines',line:{color:'#395e98',width:2}}],l,config);
+  table('#factor-annual',['年份','多空净收益','只做多净收益'],d.annual.map(r=>[r.year,m.ls.active_entries?pct(r.ls):'—',m.group_metrics[19].active_entries?pct(r.lo):'—']));
+  table('#factor-groups',['分组','CAGR','净 Sharpe','毛 Sharpe','最大回撤','累计收益','有效开仓'],m.group_metrics.map((r,i)=>[labels[i],pct(r.cagr),num(r.sharpe),num(m.group_gross_metrics[i].sharpe),pct(r.max_drawdown),pct(r.cumulative_return),r.active_entries]));
+  $('#factor-downloads').innerHTML='<a href="'+d.downloads.daily+'">每日净值 / 费用 / 敞口 / 20组数据（Parquet）</a><a href="'+d.downloads.ic+'">每日 IC（Parquet）</a><a href="'+d.downloads.summary+'">指标 CSV</a>';
+}
+$('#factor-mode').addEventListener('change',render);render();
