@@ -7,7 +7,7 @@ import shutil
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
-VERSION = '2026-09-29.llm-reference-single-v9'
+VERSION = '2026-09-29.single-chart-colors-v12'
 PAYLOAD_PREFIX = 'window.SINGLE_FACTOR_PAYLOADS=window.SINGLE_FACTOR_PAYLOADS||{};'
 
 

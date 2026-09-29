@@ -9,7 +9,7 @@
   const F = D.factors, C = D.contexts, R = D.results;
   const factorMap = new Map(F.map(f => [f.id, f]));
   const contextMap = new Map(C.map(c => [c.id, c]));
-  const colors = ['#087f79','#dd7048','#395e98','#ab4771','#6b7d27','#8765aa','#2886a4','#946741','#435971','#e29721','#4a9e70','#c05c67','#567fa7','#997b47','#b5528c','#639eac'];
+  const colors = ['#28766e','#a64d3b','#82b0a5','#cc876a','#496d61','#ba624e','#a4bfb4','#d6b19a'];
   const color = id => colors[Math.max(0, F.findIndex(f => f.id === id)) % colors.length];
   const statuses = {completed:'已有回测', blocked:'待补定义或数据', not_evaluable:'待补可计算定义', blocked_definition:'待补定义', blocked_data:'待补数据', blocked_strategy:'待补策略实现', no_entries:'未开仓', failed:'计算失败'};
   const statusText = s => statuses[s] || s || '未提供';
@@ -145,7 +145,7 @@
     const records=metrics(rows,'LS').filter(p=>p.active!==false&&finite(p.annualized_return));
     const points=records.filter(p=>finite(p.ic));
     $('scatter-count').textContent=rows.length+' 条设置 · '+points.length+' 个有效点';
-    plot('scatter',points.length?[{x:points.map(p=>p.ic),y:points.map(p=>p.annualized_return),text:points.map(p=>factorName(p.factor_id)),customdata:points.map(p=>p.id),mode:'markers',type:'scatter',marker:{size:7,color:'#33607e'},hovertemplate:'%{text}<br>Rank IC %{x:.4f}<br>年化收益 %{y:.2%}<extra></extra>'}]:[],'',{hovermode:'closest',xaxis:{title:'Mean Rank IC',gridcolor:'#e5e7df'},yaxis:{title:'年化多空净收益',tickformat:'.0%',gridcolor:'#e5e7df'}});
+    plot('scatter',points.length?[{x:points.map(p=>p.ic),y:points.map(p=>p.annualized_return),text:points.map(p=>factorName(p.factor_id)),customdata:points.map(p=>p.id),mode:'markers',type:'scatter',marker:{size:7,color:'#28766e'},hovertemplate:'%{text}<br>Rank IC %{x:.4f}<br>年化收益 %{y:.2%}<extra></extra>'}]:[],'',{hovermode:'closest',xaxis:{title:'Mean Rank IC',gridcolor:'#e5e7df'},yaxis:{title:'年化多空净收益',tickformat:'.0%',gridcolor:'#e5e7df'}});
     const scatter=$('scatter'); if(scatter.removeAllListeners)scatter.removeAllListeners('plotly_click');
     if(scatter.on)scatter.on('plotly_click',e=>{const r=R.find(r=>r.id===e.points[0]?.customdata);if(r)location.hash='factor='+encodeURIComponent(r.factor_id)+'&setting='+encodeURIComponent(r.id);});
     const contexts=C.filter(c=>compatible(c,contextMap.get(contextId)));
@@ -154,7 +154,7 @@
     plot('overview-median',valid.length?[{x:valid.map(x=>x.label),y:valid.map(x=>x.ret),type:'bar',customdata:valid.map(x=>x.n),marker:{color:valid.map(x=>x.ret<0?'#a8452f':'#1f6b62')},hovertemplate:'%{x}<br>中位年化收益 %{y:.2%}<br>%{customdata} 个有效设置<extra></extra>'}]:[],'',{hovermode:'closest',yaxis:{tickformat:'.0%'},xaxis:{tickangle:-25}});
     $('median-note').textContent=aggregates.length+' 个实际评估设置；分组内取已保存数值的中位数，不跨实验或阶段汇总。';
     const ic=aggregates.filter(x=>finite(x.ic));
-    plot('overview-decay',ic.length?[{x:ic.map(x=>x.label),y:ic.map(x=>x.ic),type:'scatter',mode:'lines+markers',line:{color:'#33607e'}}]:[],'',{xaxis:{tickangle:-25},yaxis:{title:'Median Rank IC'}});
+    plot('overview-decay',ic.length?[{x:ic.map(x=>x.label),y:ic.map(x=>x.ic),type:'scatter',mode:'lines+markers',line:{color:'#28766e'}}]:[],'',{xaxis:{tickangle:-25},yaxis:{title:'Median Rank IC'}});
     $('overview-positive').textContent=pct(median(records.map(r=>r.annualized_return)));
     $('overview-metrics').innerHTML=[[records.length,'有效多空结果',String],[median(records.map(r=>r.sharpe)),'净夏普中位数',num],[median(rows.map(r=>r.ic_mean)),'Rank IC 中位数',num],[rows.filter(r=>r.payload||r.dates?.length).length,'有逐日序列',String]].map(([v,l,f])=>`<div class="metric"><small>${esc(l)}</small><b>${esc(f(v))}</b></div>`).join('');
     table('overview-table',[['factor_id','因子',factorLink],['variant','参数版本'],['annualized_return','年化净收益',pct],['ic','Rank IC',num],['sharpe','净夏普',num]],records);
@@ -222,17 +222,25 @@
       $('factor-note').textContent = row ? (contextMap.get(row.context_id)?.description || '已保存的评估结果') + ` · 原Rank IC ${num(row.raw_ic)}；方向乘数 ${num(row.direction_multiplier)}；当前Rank IC ${num(row.ic_mean)}。` + (error ? ' 逐日序列加载失败。' : !row.dates?.length ? ' 此设置未保存逐日序列。' : '') : '该候选没有已计算设置。';
       $('factor-downloads').innerHTML = links(row?.downloads || f.downloads || []);
       const ports = row?.portfolios || [], groups = row?.groups || [];
-      plot('factor-nav', ports.filter(p => p.role === 'LS' && p.active !== false && p.nav?.length).map(p => ({x:row.dates,y:p.nav,type:'scatter',mode:'lines',name:p.label || p.id})), '扣费净值');
-      plot('factor-drawdown', row?.drawdown?.length ? [{x:row.dates,y:row.drawdown,type:'scatter',mode:'lines',fill:'tozeroy',line:{color:'#ab4771'},name:'多空回撤'}] : [], '多空回撤', {yaxis:{tickformat:'.0%'}});
+      plot('factor-nav', ports.filter(p => p.role === 'LS' && p.active !== false && p.nav?.length).map(p => ({x:row.dates,y:p.nav,type:'scatter',mode:'lines',name:p.label || p.id,line:{color:'#28766e'}})), '扣费净值');
+      plot('factor-drawdown', row?.drawdown?.length ? [{x:row.dates,y:row.drawdown,type:'scatter',mode:'lines',fill:'tozeroy',line:{color:'#a64d3b'},name:'多空回撤'}] : [], '多空回撤', {yaxis:{tickformat:'.0%'}});
+      const values=row?.ic_series||[], validIC=values.filter(finite);
+      const positiveIC=validIC.filter(v=>v>0).length;
+      $('ic-positive-share').textContent='IC>0 占比 '+(validIC.length?(100*positiveIC/validIC.length).toFixed(1)+'%':'—');
+      $('ic-positive-share').title=`当前设置完整有效每日 Rank IC：${positiveIC} / ${validIC.length}；零值计入分母，缺失值排除。`;
+      const rolling=values.map((v,i)=>{const w=values.slice(Math.max(0,i-11),i+1);return w.length===12&&w.every(finite)?w.reduce((a,b)=>a+b,0)/12:null;});
       const ic = [];
-      if (row?.ic_series?.length) ic.push({x:row.dates,y:row.ic_series,type:'scatter',mode:'lines',name:'每日Rank IC',line:{color:'#087f79'}});
-      if (row?.pearson_ic?.length) ic.push({x:row.dates,y:row.pearson_ic,type:'scatter',mode:'lines',name:'每日Pearson IC',visible:'legendonly'});
-      plot('factor-ic', ic, '每日 IC');
-      plot('factor-cum-ic', row?.cumulative_ic?.length ? [{x:row.dates,y:row.cumulative_ic,type:'scatter',mode:'lines',name:'累计Rank IC',line:{color:'#087f79'}}] : [], '累计 Rank IC');
+      if (validIC.length) {
+        ic.push({x:row.dates,y:values,type:'bar',name:'每日Rank IC（青正／红负）',marker:{color:values.map(v=>v<0?'#b85e49':'#377f74'),line:{width:0}},hovertemplate:'%{x}<br>Rank IC %{y:.4f}<extra></extra>'});
+        ic.push({x:row.dates,y:rolling,type:'scatter',mode:'lines',name:'12期滚动均值',line:{color:'#172b25',width:2},connectgaps:false});
+      }
+      if (row?.pearson_ic?.some(finite)) ic.push({x:row.dates,y:row.pearson_ic,type:'scatter',mode:'lines',name:'每日Pearson IC',line:{color:'#cc876a'},visible:'legendonly'});
+      plot('factor-ic', ic, '每日 IC · 青正／红负 · 12期滚动均值', {bargap:0});
+      plot('factor-cum-ic', row?.cumulative_ic?.length ? [{x:row.dates,y:row.cumulative_ic,type:'scatter',mode:'lines',name:'累计Rank IC',line:{color:'#28766e'}}] : [], '累计 Rank IC');
       const bars = groups.filter(p => finite(p.annualized_return) && p.active !== false);
-      plot('group-bars', bars.length ? [{x:bars.map(p => p.label || p.id),y:bars.map(p => p.annualized_return),type:'bar',marker:{color:'#087f79'}}] : [], '分组年化净收益', {hovermode:'closest',xaxis:{title:'分组'},yaxis:{tickformat:'.0%'}});
+      plot('group-bars', bars.length ? [{x:bars.map(p => p.label || p.id),y:bars.map(p => p.annualized_return),type:'bar',marker:{color:bars.map(p=>groupColor(groups.indexOf(p),groups.length))}}] : [], '分组年化净收益', {hovermode:'closest',xaxis:{title:'分组'},yaxis:{tickformat:'.0%'}});
       plot('groups', groups.filter(p => p.active !== false && p.nav?.length).map((p,i) => ({x:row.dates,y:p.nav,type:'scatter',mode:'lines',name:p.label || p.id,line:{color:groupColor(i,groups.length),width:1.4}})).concat(ports.filter(p=>p.role==='LS'&&p.active!==false&&p.nav?.length).map(p=>({x:row.dates,y:p.nav,type:'scatter',mode:'lines',name:'多空',line:{color:'#17231f',width:2.6}}))), '全部分组净值');
-      table('group-metrics', [['label','分组'],['annualized_return','年化净收益',pct],['cagr','净CAGR',pct],['sharpe','净Sharpe',num],['drawdown','最大回撤',pct],['gross_sharpe','毛Sharpe',num],['annualized_fee_rate','年化费用率',pct]], groups);
+      table('group-metrics', [['label','分组'],['annualized_return','年化净收益',v=>finite(v)?`<span style="color:${v<0?'#a64d3b':'#28766e'}">${pct(v)}</span>`:'—'],['cagr','净CAGR',pct],['sharpe','净Sharpe',num],['drawdown','最大回撤',pct],['gross_sharpe','毛Sharpe',num],['annualized_fee_rate','年化费用率',pct]], groups);
       annual('factor-annual', row ? [row] : [], 'both'); table('factor-metrics', metricColumns, metrics(row ? [row] : [], 'both'));
       $('group-count').textContent=groups.length+' 个已保存分组'+(ports.some(p=>p.role==='LS')?' + 多空':'');
       const ls=ports.find(p=>p.role==='LS');
@@ -241,7 +249,7 @@
       $('factor-summary').innerHTML=[[ls?.annualized_return,'年化净收益',pct],[ls?.sharpe,'净夏普',num],[row?.ic_mean,'Mean Rank IC',num],[ls?.drawdown,'最大回撤',pct]].map(([v,l,f])=>`<div class="metric"><small>${esc(l)}</small><b class="${finite(v)&&v<0?'neg':''}">${f(v)}</b></div>`).join('');
       plot('group-volatility',groups.some(p=>finite(p.volatility))?[{x:groups.map(p=>p.label||p.id),y:groups.map(p=>p.volatility),type:'bar',marker:{color:groups.map((p,i)=>groupColor(i,groups.length))}}]:[],'',{hovermode:'closest',yaxis:{tickformat:'.0%'}});
       const comparisons=rows.filter(r=>r.preferred!==false&&compatible(contextMap.get(r.context_id),contextMap.get(row?.context_id))).map(r=>({r,p:r.portfolios.find(p=>p.role==='LS')})).filter(x=>finite(x.p?.annualized_return));
-      plot('factor-decay',comparisons.length?[{x:comparisons.map(x=>{const c=contextMap.get(x.r.context_id);return c?.dimensions?[c.dimensions.mode,c.dimensions.hold].filter(Boolean).join(' / '):c?.label;}),y:comparisons.map(x=>x.p.annualized_return),mode:'lines+markers',type:'scatter',line:{color:'#33607e'}}]:[],'',{xaxis:{tickangle:-25},yaxis:{tickformat:'.0%'}});
+      plot('factor-decay',comparisons.length?[{x:comparisons.map(x=>{const c=contextMap.get(x.r.context_id);return c?.dimensions?[c.dimensions.mode,c.dimensions.hold].filter(Boolean).join(' / '):c?.label;}),y:comparisons.map(x=>x.p.annualized_return),mode:'lines+markers',type:'scatter',line:{color:'#28766e'}}]:[],'',{xaxis:{tickangle:-25},yaxis:{tickformat:'.0%'}});
       const icValues=(row?.ic_series||[]).filter(finite);
       plot('factor-ic-dist',icValues.length?[{x:icValues,type:'histogram',nbinsx:35,marker:{color:'#1f6b62'}}]:[],'',{hovermode:'closest',xaxis:{title:'Rank IC'},yaxis:{title:'日数'}});
 

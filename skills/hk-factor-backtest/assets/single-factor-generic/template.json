@@ -1,5 +1,5 @@
 {
-  "version": "2026-09-29.llm-reference-single-v9",
+  "version": "2026-09-29.single-chart-colors-v12",
   "scope": "Reusable display template; no historical data or factor-quality classification",
   "visual_reference": "output/LLM基本面时点研究-2026-0926-回测结果/backtest/dashboard.html",
   "reference_html_sha256": "8b4bca9c92346104e0d8a0da704fed8a8521065ba4d921ab3f48b4df103c437f",
@@ -38,7 +38,7 @@
     },
     {
       "path": "assets/report.js",
-      "sha256": "ca90191d916d0f44102f689bb4256138e6a9c766252f087c37f6cbf7185e444a"
+      "sha256": "63a4bfc9326e6c8114944b3a6133d1d4a5897ae50bdc0d52e064c0481f7a9481"
     },
     {
       "path": "assets/standalone.css",
@@ -46,7 +46,7 @@
     },
     {
       "path": "dashboard.html",
-      "sha256": "b69e644cf048bb1fee64cd9643862317ad20073c6fbb686679dabe872b4a4d9d"
+      "sha256": "88b56a30d7f11655e063ba54027a9b6082a6441f01d7d425b3162fec6d1ead87"
     },
     {
       "path": "report-data.js",

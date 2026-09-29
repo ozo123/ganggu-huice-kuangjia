@@ -1,7 +1,7 @@
 {
   "skill": "hk-factor-backtest",
-  "specification_version": "2026-09-29.adjusted-quantity-v11",
-  "created_at_utc": "2026-09-29T13:09:47.777149+00:00",
+  "specification_version": "2026-09-29.single-chart-colors-v12",
+  "created_at_utc": "2026-09-29T13:25:49.418182+00:00",
   "package_kind": "workflow, report template, configuration examples and legacy reference source",
   "default_hold_days": 20,
   "rolling": "daily; settled cash shared; overdue positions separate",
@@ -96,8 +96,8 @@
     },
     {
       "path": "assets/single-factor-generic/assets/report.js",
-      "bytes": 29340,
-      "sha256": "ca90191d916d0f44102f689bb4256138e6a9c766252f087c37f6cbf7185e444a"
+      "bytes": 30624,
+      "sha256": "63a4bfc9326e6c8114944b3a6133d1d4a5897ae50bdc0d52e064c0481f7a9481"
     },
     {
       "path": "assets/single-factor-generic/assets/standalone.css",
@@ -106,8 +106,8 @@
     },
     {
       "path": "assets/single-factor-generic/dashboard.html",
-      "bytes": 9494,
-      "sha256": "b69e644cf048bb1fee64cd9643862317ad20073c6fbb686679dabe872b4a4d9d"
+      "bytes": 9588,
+      "sha256": "88b56a30d7f11655e063ba54027a9b6082a6441f01d7d425b3162fec6d1ead87"
     },
     {
       "path": "assets/single-factor-generic/report-data.js",
@@ -116,8 +116,8 @@
     },
     {
       "path": "assets/single-factor-generic/template.json",
-      "bytes": 1895,
-      "sha256": "839e3c158f84cff3adee7fa4acbaf2b622b86ff61b2b9afdef4ed332eb30d169"
+      "bytes": 1951,
+      "sha256": "bccc1a35793abd623e92b2f8014e1385de3e1ff6070dc7126762da4030c24d2b"
     },
     {
       "path": "assets/standalone-charts.html",
@@ -186,8 +186,8 @@
     },
     {
       "path": "references/single-factor-report.md",
-      "bytes": 4366,
-      "sha256": "85cc58e554c4ed6a07b45f0455d13039fe8d8521c1d897ebdeb5722eeac88db4"
+      "bytes": 5419,
+      "sha256": "46c68925edae841453483a401d80479a640c9abf86dbf7a01f1a30bd79e25824"
     },
     {
       "path": "references/standalone-inputs.md",
@@ -256,8 +256,8 @@
     },
     {
       "path": "scripts/render_single_factor.py",
-      "bytes": 7418,
-      "sha256": "a4fa4cea63fb08260103309841932392db5717288a79db212f815442bdba5a20"
+      "bytes": 7568,
+      "sha256": "4b3dc8b9c3bfdec2fa7243ed8f900a840e416b0d486a8f85d66e8d8f86943ed3"
     },
     {
       "path": "scripts/requirements.txt",
@@ -316,8 +316,8 @@
     },
     {
       "path": "SKILL.md",
-      "bytes": 12633,
-      "sha256": "2ae4269c68aefe94c627b52292c6f5cd07f5a492e7203157cd3f2173da5c6a45"
+      "bytes": 12890,
+      "sha256": "b1a49055b09fdcc4ebeb2fce0cc355d46a4feacbfdc80615b4d86236971fce1e"
     },
     {
       "path": "verification/existing-result-date-audit.json",

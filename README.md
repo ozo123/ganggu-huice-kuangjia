@@ -2,7 +2,9 @@
 
 港股单因子研究、多因子训练、每日滚动持仓及统一可视化的 skill 流程包。
 
-当前规范版本：`2026-09-29.adjusted-quantity-v11`。
+当前规范版本：`2026-09-29.single-chart-colors-v12`。
+
+最新配色版：[完整 skill ZIP](dist/hk-factor-backtest-single-chart-colors-v12.zip) · [SHA-256](dist/hk-factor-backtest-single-chart-colors-v12.zip.sha256)。单因子图表保留原位置和尺寸，IC 时序显示青正红负、12期滚动均值及当前设置完整有效每日 IC>0 占比；分组采用红—米灰—青色带。
 
 ## 核心口径
 
