@@ -1,7 +1,7 @@
 {
   "skill": "hk-factor-backtest",
   "specification_version": "2026-09-29.llm-reference-single-v9",
-  "created_at_utc": "2026-09-29T11:38:27.867737+00:00",
+  "created_at_utc": "2026-09-29T11:40:07.269798+00:00",
   "package_kind": "workflow, report template, configuration examples and legacy reference source",
   "default_hold_days": 20,
   "rolling": "daily; settled cash shared; overdue positions separate",
@@ -94,8 +94,8 @@
     },
     {
       "path": "assets/single-factor-generic/assets/report.js",
-      "bytes": 29204,
-      "sha256": "44bdbb25bef4eaef64aebdeb18e43ec6851cc6cc94042d61bcc6f5f456912390"
+      "bytes": 29340,
+      "sha256": "ca90191d916d0f44102f689bb4256138e6a9c766252f087c37f6cbf7185e444a"
     },
     {
       "path": "assets/single-factor-generic/assets/standalone.css",
@@ -115,7 +115,7 @@
     {
       "path": "assets/single-factor-generic/template.json",
       "bytes": 1895,
-      "sha256": "cfbdc185b3c9490e45d9d5b8cc085346d7f4d178b32cb14a3b94d719b44d1ced"
+      "sha256": "839e3c158f84cff3adee7fa4acbaf2b622b86ff61b2b9afdef4ed332eb30d169"
     },
     {
       "path": "assets/standalone-charts.html",

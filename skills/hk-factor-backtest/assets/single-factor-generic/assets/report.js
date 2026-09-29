@@ -259,7 +259,8 @@
   }
   function resizePlots() {
     document.querySelectorAll('.js-plotly-plot').forEach(p=>{
-      if(p.clientWidth>0)Plotly.relayout(p,{width:p.clientWidth});
+      // Plotly.purge leaves the host class behind when a setting has no series.
+      if(p.clientWidth>0&&p._fullLayout&&p.layout&&p.querySelector('.main-svg'))Plotly.relayout(p,{width:p.clientWidth});
     });
   }
   function route() {
