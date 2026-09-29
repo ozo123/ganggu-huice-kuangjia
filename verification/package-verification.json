@@ -1,14 +1,10 @@
 {
   "passed": true,
-  "version": "2026-09-29.spearman-dedup-v10",
-  "zip": "hk-factor-backtest-spearman-dedup-v10.zip",
-  "sha256": "27783aa26999ff63e850bb32e9e678e85b475342553e3c1944caca01caf0c2d4",
-  "zip_crc_and_bytes_verified": true,
-  "registered_skill_and_repository_files_match": true,
-  "registered_files_compared": 52,
-  "file_count": 54,
-  "archive_bytes": 2836302,
-  "regression_tests_passed": 24,
-  "spearman_real_sample_vs_scipy_passed": true,
-  "scope": "Spearman deduplication workflow, method metadata and tests; no historical backtest recalculation or new 20-day ledger certification."
+  "specification_version": "2026-09-29.adjusted-quantity-v11",
+  "archive": "hk-factor-backtest-adjusted-quantity-v11.zip",
+  "archive_sha256": "7c4da220ba84bd11d790730f2f877d62059c5a60245d698c61ce8f6c7f607260",
+  "packaged_file_count": 55,
+  "all_packaged_bytes_match_sources": true,
+  "zip_crc_passed": true,
+  "validation_scope": "Adjusted factor volume/amount source regression and 7 report tests passed; full backtest will be executed as a separate new batch."
 }

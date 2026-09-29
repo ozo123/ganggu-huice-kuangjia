@@ -2,9 +2,11 @@
 
 港股单因子研究、多因子训练、每日滚动持仓及统一可视化的 skill 流程包。
 
-当前规范版本：`2026-09-29.spearman-dedup-v10`。
+当前规范版本：`2026-09-29.adjusted-quantity-v11`。
 
 ## 核心口径
+
+- 因子成交量、成交额直接来自对应后复权表（现金分红／分红再投）；VWAP为同口径 amount/volume。缺字段不回退原始数据。股票可选性、5日平均成交额严格大于300万港元及可交易性继续使用不复权数据。供应商量额若相同则如实保留。
 
 - 单因子回测与多因子训练仅使用 **2010-01-01 至 2022-12-31**；方向、IC、因子值相关性、去重及筛选同样受此边界约束。
 - 训练信号、入场和收益标签到期日必须全部落在训练区间，清除跨年末的未成熟标签。
@@ -17,7 +19,7 @@
 
 ## 文件入口
 
-- [最新完整流程包 ZIP](dist/hk-factor-backtest-spearman-dedup-v10.zip) 与 [SHA-256](dist/hk-factor-backtest-spearman-dedup-v10.zip.sha256)
+- [最新完整流程包 ZIP](dist/hk-factor-backtest-adjusted-quantity-v11.zip) 与 [SHA-256](dist/hk-factor-backtest-adjusted-quantity-v11.zip.sha256)
 - [Skill 主流程](skills/hk-factor-backtest/SKILL.md)
 - [单因子口径](skills/hk-factor-backtest/references/standalone-methodology.md)
 - [多因子训练与冻结测试](skills/hk-factor-backtest/references/multifactor-workflow.md)

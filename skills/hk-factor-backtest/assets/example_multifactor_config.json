@@ -1,6 +1,6 @@
 {
   "schema_note": "多因子流程配置示例；执行前由本次指定引擎显式适配和检验，不宣称旧内置入口已支持这些字段。",
-  "specification_version": "2026-09-29.spearman-dedup-v10",
+  "specification_version": "2026-09-29.adjusted-quantity-v11",
   "data_root": null,
   "factors": "example_factors.json",
   "output": "./example-output",
@@ -10,8 +10,13 @@
   "train_end": "2022-12-31",
   "test_start": "2023-01-01",
   "test_end": "2025-12-31",
-  "holds": [20],
-  "modes": ["cash", "reinvest"],
+  "holds": [
+    20
+  ],
+  "modes": [
+    "cash",
+    "reinvest"
+  ],
   "groups": 20,
   "correlation_method": "spearman",
   "correlation_threshold": 0.8,
@@ -24,5 +29,12 @@
   "exit": "entry_plus_20_close",
   "daily_budget": "previous_close_nav / (hold_days + 1), constrained by settled cash and opening gross headroom",
   "cash_reuse": "shared settled cash; overdue securities tracked separately",
-  "report_template": "TA-Lib双因子库2010-2022-2026-0928-回测结果"
+  "report_template": "TA-Lib双因子库2010-2022-2026-0928-回测结果",
+  "factor_data_policy": {
+    "volume": "matching_adjusted_source",
+    "amount": "matching_adjusted_source",
+    "vwap": "matching_adjusted_amount / matching_adjusted_volume",
+    "eligibility": "raw_amount_and_raw_tradability",
+    "revision": "adjusted-quantity-v11"
+  }
 }

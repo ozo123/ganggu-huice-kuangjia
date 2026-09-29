@@ -1,7 +1,7 @@
 {
   "skill": "hk-factor-backtest",
-  "specification_version": "2026-09-29.spearman-dedup-v10",
-  "created_at_utc": "2026-09-29T12:56:03.291954+00:00",
+  "specification_version": "2026-09-29.adjusted-quantity-v11",
+  "created_at_utc": "2026-09-29T13:09:47.777149+00:00",
   "package_kind": "workflow, report template, configuration examples and legacy reference source",
   "default_hold_days": 20,
   "rolling": "daily; settled cash shared; overdue positions separate",
@@ -66,8 +66,8 @@
     },
     {
       "path": "assets/example_config.json",
-      "bytes": 599,
-      "sha256": "f182cb2267e67dbb2659a59684de4593b20e2539ce9349de265be6c8116d7060"
+      "bytes": 930,
+      "sha256": "3303a983095e0ec803a49536ce8558241fe921d6fdadf9898d74962ec1ebeeb7"
     },
     {
       "path": "assets/example_factors.json",
@@ -76,8 +76,8 @@
     },
     {
       "path": "assets/example_multifactor_config.json",
-      "bytes": 1166,
-      "sha256": "7bd6283ced3ebc21224fab8ff317e298075af068f39504d94bd7a87089924007"
+      "bytes": 1504,
+      "sha256": "53ec81c81ccf9cbfb39c9c0c2658c42bed3f9777d5f43264bf338e3816e50665"
     },
     {
       "path": "assets/single-factor-generic/assets/dashboard.css",
@@ -166,13 +166,13 @@
     },
     {
       "path": "assets/talib-20260928/template.json",
-      "bytes": 3027,
-      "sha256": "d17bf27fd1920ec14c9526cd6acbfc7a8f56035ba35d693ee4551f41a29aafc7"
+      "bytes": 3035,
+      "sha256": "8dcc1b303186b9b932f96dba67cc359aa9748da981d246547d1257539f97216b"
     },
     {
       "path": "references/multifactor-workflow.md",
-      "bytes": 10903,
-      "sha256": "1e088b0ca752236be390e2b301ba0e1815a809ec59da76f8328a827de2ad2b0c"
+      "bytes": 11133,
+      "sha256": "29f41a33f72143d76907d560df7c2f9b0515f7e6a20f468f7f5bd7fd656ae667"
     },
     {
       "path": "references/rolling-execution.md",
@@ -191,13 +191,13 @@
     },
     {
       "path": "references/standalone-inputs.md",
-      "bytes": 6085,
-      "sha256": "08b933961bf671e3cc272379eb9fa3157950a765560604a02b2aa3269eb1c26f"
+      "bytes": 6617,
+      "sha256": "925c4ac19f0de3c55636a3dbfc482c4c63190da767d3d31c0d882312330c0912"
     },
     {
       "path": "references/standalone-methodology.md",
-      "bytes": 9935,
-      "sha256": "5be252e594ff34400a3c3cb0f7e12ea979d3861d1620340bf36db08d99a44074"
+      "bytes": 10608,
+      "sha256": "d48d536d610ce8e3bad2017e44c0a686199703bd2c374f4526fe9cdc21704025"
     },
     {
       "path": "references/standalone-report.md",
@@ -216,8 +216,8 @@
     },
     {
       "path": "scripts/daily_data.py",
-      "bytes": 16453,
-      "sha256": "7ebf78994375b4419a01265dca5f80980305fcd3a17637135cb522e15556d170"
+      "bytes": 17327,
+      "sha256": "24330b93a832ceab497dfa21d16a09c17be841a8b69ef12b0c53fef02f4020ab"
     },
     {
       "path": "scripts/engine/__init__.py",
@@ -266,8 +266,8 @@
     },
     {
       "path": "scripts/run.py",
-      "bytes": 17186,
-      "sha256": "0a8dd2649d78a346c582e3db8c7e3ad82b5d06ae5de65b63af33c0e5e31bc7b6"
+      "bytes": 17185,
+      "sha256": "9279222f0df5d724f8b788bb3bb3b92f6b60351591db80359bbe9e3458dc071d"
     },
     {
       "path": "scripts/select_factors.py",
@@ -288,6 +288,11 @@
       "path": "scripts/standalone_utils.py",
       "bytes": 1897,
       "sha256": "0a7f4a253b4fa5baf3aeca2b3e6b8dccfb81cb19b92770f4cc7c74c16d222d5f"
+    },
+    {
+      "path": "scripts/test_adjusted_quantity.py",
+      "bytes": 2320,
+      "sha256": "9640c26f51bda26dd6275c81821184b870f4415658ae1175cde7f2691538f6c8"
     },
     {
       "path": "scripts/test_dedup_spearman.py",
@@ -311,8 +316,8 @@
     },
     {
       "path": "SKILL.md",
-      "bytes": 12292,
-      "sha256": "72e2b7d8fa386606e83866cb56f51e4ccf3e486c35053480784480896d55f3bd"
+      "bytes": 12633,
+      "sha256": "2ae4269c68aefe94c627b52292c6f5cd07f5a492e7203157cd3f2173da5c6a45"
     },
     {
       "path": "verification/existing-result-date-audit.json",
@@ -327,5 +332,12 @@
     "min_stocks": 20,
     "winsorize": false,
     "aggregation": "equal_weight_mean_signed"
+  },
+  "factor_data_policy": {
+    "volume": "matching_adjusted_source",
+    "amount": "matching_adjusted_source",
+    "vwap": "matching_adjusted_amount / matching_adjusted_volume",
+    "eligibility": "raw_amount_and_raw_tradability",
+    "revision": "adjusted-quantity-v11"
   }
 }

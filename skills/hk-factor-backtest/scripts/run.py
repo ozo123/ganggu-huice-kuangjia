@@ -52,14 +52,14 @@ def configuration(args):
 def inspection(cfg, specs):
     sources, profile = discover(cfg)
     raw = set().union(*(set(columns(p)) for p in sources['raw']))
-    available = (raw & {'volume', 'amount', 'preClose', 'turnoverRatio'}) | {'raw_open', 'raw_high', 'raw_low', 'raw_close'}
-    if {'amount', 'volume'} <= raw: available.add('vwap')
+    available = (raw & {'preClose', 'turnoverRatio'}) | {'raw_open', 'raw_high', 'raw_low', 'raw_close'}
     records = []
     for spec in specs:
         per_mode = {}
         for mode in MODES:
             if not sources[mode]: per_mode[mode] = {'status': 'blocked_data', 'reasons': [profile.get('mode_errors', {}).get(mode, '缺少' + mode + '日线')]}; continue
-            adj = set().union(*(set(columns(p)) for p in sources[mode])) & {'open', 'high', 'low', 'close'}
+            adj = set().union(*(set(columns(p)) for p in sources[mode])) & {'open', 'high', 'low', 'close', 'volume', 'amount'}
+            if {'amount', 'volume'} <= adj: adj.add('vwap')
             per_mode[mode] = admit(spec, available | adj)
         records.append({'id': spec['id'], 'name': spec['name'], 'modes': per_mode})
     return {'profile': profile, 'factors': records, 'scope': 'given_factors_only; mining_not_invoked'}

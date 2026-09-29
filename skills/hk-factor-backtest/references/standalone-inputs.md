@@ -12,7 +12,7 @@
 {"currency":"HKD","amount_unit":"HKD","files":{"raw":["raw/2024.parquet"],"cash":["cash/2024.parquet"],"reinvest":["reinvest/2024.parquet"]}}
 ```
 
-主键 `code,date`，code保留字符串（如0700.HK），date为ISO日期。三类都需open/high/low/close，不复权另需volume/amount，可选preClose/turnoverRatio。复权表量额不使用。非正价格、负量额为缺失；已知零量额保留。重复主键、跨分片重叠报错，不静默取最后记录。
+主键 `code,date`，code保留字符串（如0700.HK），date为ISO日期。三类都需open/high/low/close。不复权需volume/amount供股票池与可交易性判断；各后复权表按因子需求提供volume/amount，可选preClose/turnoverRatio。因子所用成交量、成交额直接读取本次对应后复权行情表中的 volume、amount：现金口径取后复权现金分红表，再投口径取后复权分红再投表；不自行重算复权量额，不回退到原始量额。股票可选性、300万港元五日均额门槛和可交易性仍使用不复权数据。缺少对应字段或无有限观测时，将依赖该字段的因子标为缺数据，不用另一口径填补。非正价格、负量额为缺失；已知零量额保留。重复主键、跨分片重叠报错，不静默取最后记录。
 
 `ipo_dates_csv`字段code,listing_date；`allow_observed_age_proxy`默认true，缺IPO时用首个有效成交日起6自然月代理并披露。false则缺IPO者排除。`codes`用于明确指定股票范围或验证；`start=2010-01-01,end=2022-12-31`限定单因子模拟和IC。默认从2010年起的历史计算信号，预热不足保持缺失。正式上市日期可早于该区间，不能把真实上市年限改为从回测起点起算。
 
@@ -28,7 +28,7 @@
 
 ID唯一，ASCII字母数字、短横、下划线，首字符字母或数字；名称可中文。保留公式、参数及provenance。direction默认1代表先验方向；**单因子和组合均仅按2010–2022区间内已成熟标签定向；组合方向在测试前冻结**，翻转乘数相对于先验方向。不要把事后翻转称成事先已知。
 
-字段：本口径open/high/low/close；原始volume/amount/preClose/turnoverRatio/raw_open/raw_high/raw_low/raw_close；vwap=原始amount/原始volume。preClose为原始供应商参考价，不与复权close混算收益。实际无有限观测的字段不能宣称可用。
+字段：本口径open/high/low/close/volume/amount；原始preClose/turnoverRatio/raw_open/raw_high/raw_low/raw_close；vwap=本口径amount/本口径volume，分母为0时缺失。preClose为原始供应商参考价，不与复权close混算收益。实际无有限观测的字段不能宣称可用。
 
 表达式支持四则、乘方、正负号及lag/delta/mean/std/sum/min/max/corr/rank/abs/log/sqrt/sign。滚动窗口必须完整；std样本标准差；rank当日截面平均秩百分位；corr(x,y,n)为逐股滚动Pearson。窗口与lag仅正整数，无任意eval。未支持的公式继续写经过审阅的Python，不判为市场不适用。
 

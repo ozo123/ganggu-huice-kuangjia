@@ -7,6 +7,9 @@ from standalone_utils import MODES, read, write, digest, file_hash
 
 PRICE_FIELDS = ['open', 'high', 'low', 'close', 'volume', 'preClose']
 MODE_DIRS = {'raw': '不复权', 'cash': '后复权_现金分红', 'reinvest': '后复权_分红再投'}
+FACTOR_DATA_POLICY = {'volume': 'matching_adjusted_source', 'amount': 'matching_adjusted_source',
+                      'vwap': 'matching_adjusted_amount / matching_adjusted_volume',
+                      'eligibility': 'raw_amount_and_raw_tradability', 'revision': 'adjusted-quantity-v11'}
 
 
 def resolve_native(root, stored):
@@ -212,6 +215,8 @@ def prepare(cfg, output):
         if not paths: mode_errors.setdefault(mode, '缺少此复权口径日线'); continue
         try:
             target = np.lib.format.open_memmap(folder / (mode + '_inputs.npy'), mode='w+', dtype='float64', shape=(N, T, 6)); target[:] = np.nan
+            mode_amount = amount if mode == 'raw' else np.lib.format.open_memmap(folder / (mode + '_amount.npy'), mode='w+', dtype='float64', shape=(T, N))
+            if mode != 'raw': mode_amount[:] = np.nan
             seen = np.zeros((N, T), bool); fields_present = set()
             for p in paths:
                 if not set(['code', 'date', 'open', 'high', 'low', 'close']).issubset(columns(p)):
@@ -229,15 +234,16 @@ def prepare(cfg, output):
                     vals[~np.isfinite(vals) | (vals < 0 if field == 'volume' else vals <= 0)] = np.nan
                     target[rows, cols, k] = vals
                     if np.isfinite(vals).any(): fields_present.add(field)
-                if mode == 'raw':
-                    for name, dst in [('amount', amount), ('turnoverRatio', turnover)]:
+                extra_fields = [('amount', mode_amount)]
+                if mode == 'raw': extra_fields.append(('turnoverRatio', turnover))
+                for name, dst in extra_fields:
                         if name in f:
                             vals = pd.to_numeric(f[name], errors='raise').to_numpy(dtype=float, copy=True)
                             vals[~np.isfinite(vals) | (vals < 0)] = np.nan
                             dst[cols, rows] = vals
                             if np.isfinite(vals).any(): fields_present.add(name)
                 print(f'Loaded {mode}: {p.name}, {len(f):,} rows', flush=True)
-            target.flush(); arrays[mode] = target; available[mode] = sorted(fields_present)
+            target.flush(); mode_amount.flush(); arrays[mode] = target; available[mode] = sorted(fields_present)
         except Exception as exc:
             if mode == 'raw': raise
             mode_errors[mode] = f'{type(exc).__name__}: {exc}'
@@ -251,7 +257,7 @@ def prepare(cfg, output):
     write(folder / 'axes.json', {'dates': dates, 'codes': codes}); write(folder / 'pool.json', pool_info)
     result = dict(folder=str(folder), fingerprint=fingerprint, axes={'dates': dates, 'codes': codes},
                   receipt=receipt, profile=profile, available_fields=available, mode_errors=mode_errors, marks=marks,
-                  pool=pool_info, cash_policy='causal_daily_affine_inference_no_subscription',
+                  pool=pool_info, factor_data_policy=FACTOR_DATA_POLICY, cash_policy='causal_daily_affine_inference_no_subscription',
                   prepared_sha256={p.name: file_hash(p) for p in folder.glob('*.npy')})
     write(folder / 'complete.json', result)
     return result
@@ -263,11 +269,13 @@ def factor_fields(dataset, mode):
     adj = np.load(folder / (mode + '_inputs.npy'), mmap_mode='r')
     fields = {k: adj[:, :, i].T for i, k in enumerate(PRICE_FIELDS[:4])}
     raw_fields = dataset['available_fields']['raw']
-    for k, i in [('volume', 4), ('preClose', 5)]:
-        if k in raw_fields: fields[k] = raw[:, :, i].T
-    for k in ('amount', 'turnoverRatio'):
-        if k in raw_fields: fields[k] = np.load(folder / (k + '.npy'), mmap_mode='r')
+    adjusted_fields = dataset['available_fields'][mode]
+    if 'volume' in adjusted_fields: fields['volume'] = adj[:, :, 4].T
+    if 'amount' in adjusted_fields: fields['amount'] = np.load(folder / (mode + '_amount.npy'), mmap_mode='r')
+    if 'preClose' in raw_fields: fields['preClose'] = raw[:, :, 5].T
+    if 'turnoverRatio' in raw_fields: fields['turnoverRatio'] = np.load(folder / 'turnoverRatio.npy', mmap_mode='r')
     for i, k in enumerate(PRICE_FIELDS[:4]): fields['raw_' + k] = raw[:, :, i].T
-    with np.errstate(all='ignore'):
-        fields['vwap'] = np.divide(fields['amount'], fields['volume'], out=np.full(fields['amount'].shape, np.nan), where=fields['volume'] > 0)
+    if 'amount' in fields and 'volume' in fields:
+        with np.errstate(all='ignore'):
+            fields['vwap'] = np.divide(fields['amount'], fields['volume'], out=np.full(fields['amount'].shape, np.nan), where=fields['volume'] > 0)
     return fields

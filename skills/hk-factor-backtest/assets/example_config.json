@@ -8,8 +8,13 @@
   "amount_unit": "HKD",
   "ipo_dates_csv": null,
   "allow_observed_age_proxy": true,
-  "holds": [20],
-  "modes": ["cash", "reinvest"],
+  "holds": [
+    20
+  ],
+  "modes": [
+    "cash",
+    "reinvest"
+  ],
   "groups": 20,
   "fee_one_way": 0.002,
   "listing_age_months": 6,
@@ -20,5 +25,12 @@
   "correlation_method": "spearman",
   "correlation_threshold": 0.8,
   "min_ic": 0.01,
-  "min_correlation_months": 1
+  "min_correlation_months": 1,
+  "factor_data_policy": {
+    "volume": "matching_adjusted_source",
+    "amount": "matching_adjusted_source",
+    "vwap": "matching_adjusted_amount / matching_adjusted_volume",
+    "eligibility": "raw_amount_and_raw_tradability",
+    "revision": "adjusted-quantity-v11"
+  }
 }
